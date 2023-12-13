@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccnfhy1pju2vo"]
+
+[ext_resource type="Script" path="res://units/player/player.gd" id="1_6ih47"]
+[ext_resource type="Texture2D" uid="uid://g282e7fxs8ki" path="res://assets/Player.png" id="2_wb62c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsxaj"]
+size = Vector2(6, 6)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 25
+motion_mode = 1
+script = ExtResource("1_6ih47")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wb62c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gsxaj")
+
+[node name="AttackCooldown" type="Timer" parent="."]
+
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4bjsgao3vjly"]
+
+[ext_resource type="Texture2D" uid="uid://dpgsxidbrwkel" path="res://assets/Player-Bullet.png" id="1_0ifus"]
+[ext_resource type="Script" path="res://units/player/player_bullet.gd" id="1_hgo2b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dp7b0"]
+size = Vector2(3, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkomn"]
+size = Vector2(3, 3)
+
+[node name="PlayerBullet" type="RigidBody2D"]
+collision_layer = 4
+script = ExtResource("1_hgo2b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0ifus")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dp7b0")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_bkomn")
+debug_color = Color(0.972549, 0, 0.435294, 0.419608)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

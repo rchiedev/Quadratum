@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dppo251eop6h3"]
+
+[ext_resource type="Texture2D" uid="uid://c64ku1coaj42o" path="res://assets/Enemy-1.png" id="1_d8cff"]
+[ext_resource type="Script" path="res://units/enemies/1/1.gd" id="1_t8dhm"]
+[ext_resource type="Texture2D" uid="uid://dpgsxidbrwkel" path="res://assets/Player-Bullet.png" id="3_prq7k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_usahn"]
+radius = 4.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m511x"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+angle_max = 180.0
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.960784, 0.670588, 0.678431, 1)
+
+[node name="1" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_t8dhm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_d8cff")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_usahn")
+
+[node name="DamagedParticle" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_m511x")
+texture = ExtResource("3_prq7k")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
