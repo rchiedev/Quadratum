@@ -1,11 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://dm0773o2fnw35"]
+[gd_scene load_steps=18 format=3 uid="uid://dm0773o2fnw35"]
 
 [ext_resource type="Texture2D" uid="uid://bridvg52jj1ml" path="res://assets/Background.png" id="1_d3s83"]
 [ext_resource type="Script" path="res://game/enemy_container.gd" id="2_o2ba0"]
-[ext_resource type="PackedScene" uid="uid://dppo251eop6h3" path="res://units/enemies/1/1.tscn" id="3_3ki48"]
+[ext_resource type="PackedScene" uid="uid://bs0djvvyb3b0e" path="res://units/enemies/1/1.tscn" id="3_423yo"]
 [ext_resource type="Script" path="res://game/ProjectileContainer.gd" id="3_y65bk"]
+[ext_resource type="PackedScene" uid="uid://cai7u1ypb8wif" path="res://units/enemies/2/2.tscn" id="4_6y017"]
 [ext_resource type="PackedScene" uid="uid://ccnfhy1pju2vo" path="res://units/player/player.tscn" id="4_h8ajc"]
 [ext_resource type="FontFile" uid="uid://dhl7e2l35ot2l" path="res://assets/m5x7.ttf" id="5_rhqd1"]
+[ext_resource type="Texture2D" uid="uid://c273gqtikvto5" path="res://assets/HealthBar.png" id="7_bumym"]
+[ext_resource type="Script" path="res://game/wave_timer.gd" id="8_dhhg8"]
+[ext_resource type="Texture2D" uid="uid://c48pikke85ytx" path="res://assets/HealthBar-Progress.png" id="8_o65x0"]
+[ext_resource type="Script" path="res://game/HealthBar.gd" id="9_0eqhm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhosp"]
 size = Vector2(360, 20)
@@ -15,6 +20,30 @@ size = Vector2(20, 220)
 
 [sub_resource type="Theme" id="Theme_ljycn"]
 default_font = ExtResource("5_rhqd1")
+
+[sub_resource type="Theme" id="Theme_6tvcu"]
+default_font = ExtResource("5_rhqd1")
+
+[sub_resource type="Animation" id="Animation_lbvnm"]
+resource_name = "shake"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(0.2, 0.2, 0.2, 0.2),
+"update": 0,
+"values": [Vector2(6, 168), Vector2(10, 172), Vector2(7, 171), Vector2(8, 170)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1jyc1"]
+_data = {
+"shake": SubResource("Animation_lbvnm")
+}
 
 [node name="Game" type="Node2D"]
 
@@ -56,28 +85,67 @@ shape = SubResource("RectangleShape2D_2phw0")
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 script = ExtResource("2_o2ba0")
+enemy_list = Array[PackedScene]([ExtResource("3_423yo"), ExtResource("4_6y017")])
 
-[node name="Timer" type="Timer" parent="EnemyContainer"]
+[node name="EnemyTimer" type="Timer" parent="EnemyContainer"]
 autostart = true
 
-[node name="1" parent="EnemyContainer" instance=ExtResource("3_3ki48")]
-position = Vector2(211, 38)
+[node name="WaveTimer" type="Timer" parent="EnemyContainer"]
+wait_time = 30.0
+one_shot = true
+autostart = true
 
 [node name="ProjectileContainer" type="Node2D" parent="."]
 script = ExtResource("3_y65bk")
 
 [node name="Player" parent="." instance=ExtResource("4_h8ajc")]
-position = Vector2(162, 94)
+position = Vector2(161, 92)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_right = 76.0
-offset_bottom = 23.0
+[node name="WaveCounter" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -38.0
+offset_top = 4.0
+offset_right = 38.0
+offset_bottom = 27.0
+grow_horizontal = 2
 theme = SubResource("Theme_ljycn")
 theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
-text = "test Label"
+text = "Wave 99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="timeout" from="EnemyContainer/Timer" to="EnemyContainer" method="_on_timer_timeout"]
+[node name="WaveTimer" type="Label" parent="CanvasLayer"]
+offset_left = 140.0
+offset_top = 17.0
+offset_right = 180.0
+offset_bottom = 40.0
+theme = SubResource("Theme_6tvcu")
+theme_override_colors/font_color = Color(0.831373, 0.831373, 0.831373, 1)
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_dhhg8")
+
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 8.0
+offset_top = 170.0
+offset_right = 60.0
+offset_bottom = 174.0
+step = 0.1
+value = 100.0
+texture_over = ExtResource("7_bumym")
+texture_progress = ExtResource("8_o65x0")
+texture_progress_offset = Vector2(1, 1)
+script = ExtResource("9_0eqhm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HealthBar"]
+libraries = {
+"": SubResource("AnimationLibrary_1jyc1")
+}
+
+[connection signal="timeout" from="EnemyContainer/EnemyTimer" to="EnemyContainer" method="_on_enemy_timer_timeout"]
+[connection signal="timeout" from="EnemyContainer/WaveTimer" to="EnemyContainer" method="_on_wave_timer_timeout"]

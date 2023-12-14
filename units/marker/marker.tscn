@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvf3u8rty3o4w"]
+[gd_scene load_steps=7 format=3 uid="uid://dvf3u8rty3o4w"]
 
 [ext_resource type="Texture2D" uid="uid://dtusgos548gre" path="res://assets/Spawn-Marker.png" id="1_lclul"]
 [ext_resource type="Script" path="res://units/marker/marker.gd" id="2_udy5o"]
+[ext_resource type="Texture2D" uid="uid://dpgsxidbrwkel" path="res://assets/Player-Bullet.png" id="3_0g6c5"]
 
 [sub_resource type="Animation" id="Animation_du3if"]
 resource_name = "spawn"
@@ -38,6 +39,16 @@ _data = {
 "spawn": SubResource("Animation_du3if")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_heeiq"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+angle_max = 180.0
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.960784, 0.670588, 0.678431, 1)
+
 [node name="Marker" type="Sprite2D"]
 texture = ExtResource("1_lclul")
 script = ExtResource("2_udy5o")
@@ -46,3 +57,12 @@ script = ExtResource("2_udy5o")
 libraries = {
 "": SubResource("AnimationLibrary_s50iv")
 }
+
+[node name="Particle" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_heeiq")
+texture = ExtResource("3_0g6c5")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0

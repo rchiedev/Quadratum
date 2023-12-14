@@ -41,5 +41,9 @@ explosiveness = 1.0
 
 [node name="InvincibleTimer" type="Timer" parent="."]
 
+[node name="RegenerationTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]
+[connection signal="timeout" from="RegenerationTimer" to="." method="_on_regeneration_timer_timeout"]

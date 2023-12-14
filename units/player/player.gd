@@ -3,6 +3,7 @@ class_name Player
 
 @onready var attack_cooldown = $AttackCooldown
 @onready var invincible_timer = $InvincibleTimer
+@onready var regeneration_timer = $RegenerationTimer
 
 @onready var damaged_particle = $DamagedParticle
 
@@ -13,6 +14,12 @@ var mspd : float = 75.0
 
 var can_shoot : bool = true
 var can_be_damaged : bool = true
+var max_health : float = 100.0
+var health : float
+
+func _ready():
+	health = max_health
+	SignalBus.on_hp_changed.emit(health, max_health)
 
 func _physics_process(delta):
 	look_at(get_global_mouse_position())
@@ -23,7 +30,7 @@ func _physics_process(delta):
 	
 	if get_last_slide_collision():
 		if get_last_slide_collision().get_collider() is Enemy and can_be_damaged:
-			take_damage()
+			take_damage(get_last_slide_collision().get_collider().damage)
 	
 	if Input.is_action_pressed("click") and can_shoot:
 		shoot()
@@ -39,12 +46,26 @@ func shoot():
 func _on_attack_cooldown_timeout():
 	can_shoot = true
 	
-func take_damage():
+func take_damage(damage : float):
+	change_health(-damage)
+	SignalBus.on_player_hurt.emit()
+	
 	damaged_particle.restart()
 	damaged_particle.emitting = true
 	can_be_damaged = false
 	invincible_timer.start(0.75)
-	print("Got Hit")
+	
+	print("Current HP: ", health)
+
+func regenerate_health(heal_value : float):
+	change_health(heal_value)
+
+func change_health(value : int):
+	health = clamp(health + value, 0, max_health)
+	SignalBus.on_hp_changed.emit(health, max_health)
 
 func _on_invincible_timer_timeout():
 	can_be_damaged = true
+
+func _on_regeneration_timer_timeout():
+	regenerate_health(1)

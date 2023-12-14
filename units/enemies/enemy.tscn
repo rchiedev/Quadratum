@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpgurf2jxihrw"]
+
+[ext_resource type="Script" path="res://units/enemies/enemy.gd" id="1_b1ls4"]
+[ext_resource type="Texture2D" uid="uid://dpgsxidbrwkel" path="res://assets/Player-Bullet.png" id="1_vd4vk"]
+[ext_resource type="Script" path="res://units/enemies/movement_behavior.gd" id="2_7fkt3"]
+[ext_resource type="Script" path="res://units/enemies/attacking_behavior.gd" id="3_jq17j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_okf44"]
+radius = 4.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k452o"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+angle_max = 180.0
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.960784, 0.670588, 0.678431, 1)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_b1ls4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_okf44")
+
+[node name="MovementBehavior" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_7fkt3")
+
+[node name="AttackingBehavior" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_jq17j")
+
+[node name="DamagedParticle" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_k452o")
+texture = ExtResource("1_vd4vk")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
