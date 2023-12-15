@@ -9,7 +9,7 @@ signal on_gem_collected()
 
 #Enemy Related
 signal on_enemy_spawn(enemy : Enemy, starting_pos : Vector2)
-signal on_enemy_death(pos : Vector2)
+signal on_enemy_death(pos : Vector2, qty : int)
 
 #Game Related
 signal on_wave_timer_countdown(time : float)

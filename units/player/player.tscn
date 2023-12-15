@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccnfhy1pju2vo"]
+[gd_scene load_steps=7 format=3 uid="uid://ccnfhy1pju2vo"]
 
 [ext_resource type="Script" path="res://units/player/player.gd" id="1_6ih47"]
 [ext_resource type="Texture2D" uid="uid://g282e7fxs8ki" path="res://assets/Player.png" id="2_wb62c"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gsxaj"]
 size = Vector2(6, 6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_20xth"]
+radius = 16.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_taawa"]
 lifetime_randomness = 0.5
@@ -29,6 +32,20 @@ texture = ExtResource("2_wb62c")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gsxaj")
 
+[node name="CollectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea"]
+shape = SubResource("CircleShape2D_20xth")
+
+[node name="AttackCooldown" type="Timer" parent="."]
+
+[node name="InvincibleTimer" type="Timer" parent="."]
+
+[node name="RegenerationTimer" type="Timer" parent="."]
+autostart = true
+
 [node name="DamagedParticle" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 5
@@ -38,13 +55,7 @@ lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 
-[node name="AttackCooldown" type="Timer" parent="."]
-
-[node name="InvincibleTimer" type="Timer" parent="."]
-
-[node name="RegenerationTimer" type="Timer" parent="."]
-autostart = true
-
+[connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]
 [connection signal="timeout" from="RegenerationTimer" to="." method="_on_regeneration_timer_timeout"]

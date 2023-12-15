@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var enemy_timer = $EnemyTimer
-@onready var wave_timer = $WaveTimer
+@onready var enemy_timer = %EnemyTimer
+@onready var wave_timer = %WaveTimer
 
 @export var enemy_list : Array[PackedScene]
 
@@ -45,4 +45,3 @@ func stop_wave():
 		marker.queue_free()
 	for enemy in get_children().filter(func(node): return node is Enemy):
 		enemy.queue_free()
-	

@@ -87,6 +87,10 @@ func on_player_death():
 	await get_tree().create_timer(3).timeout
 	SceneManager.transition_to_game_over(self.get_global_transform_with_canvas().origin)
 
-
 func disable_movement():
 	can_move = false
+
+
+func _on_collection_area_area_entered(area):
+	if area is Gem:
+		area.is_collected = true
