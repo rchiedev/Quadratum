@@ -14,7 +14,8 @@ func _process(delta):
 func spawn_drop(pos : Vector2, qty : int):
 	for i in qty:
 		var gem = GEM_SCENE.instantiate()
-		gem.global_position = pos
+		gem.global_position.x = pos.x + randf_range(0.0, 5.0)
+		gem.global_position.y = pos.y + randf_range(0.0, 5.0)
 		call_deferred("add_child", gem)
 
 func clear_gems():

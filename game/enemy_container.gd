@@ -16,15 +16,16 @@ func _process(delta):
 	SignalBus.on_wave_timer_countdown.emit(wave_timer.time_left)
 
 func spawn_enemy(enemy : Enemy, starting_pos : Vector2):
-	enemy.global_position = starting_pos
+	enemy.global_position.x = starting_pos.x + randf_range(0.0, 10.0)
+	enemy.global_position.y = starting_pos.y + randf_range(0.0, 10.0)
 	add_child(enemy)
 
 func _on_enemy_timer_timeout():
-	var global_postion_x = randi_range(16, 304)
-	var global_postion_y = randi_range(16, 164)
+	var global_position_x = randi_range(16, 304)
+	var global_position_y = randi_range(16, 164)
 	
 	var marker = MARKER_SCENE.instantiate()
-	marker.global_position = Vector2(global_postion_x, global_postion_y)
+	marker.global_position = Vector2(global_position_x, global_position_y)
 	marker.enemy_scene = enemy_list.pick_random()
 	add_child(marker)
 

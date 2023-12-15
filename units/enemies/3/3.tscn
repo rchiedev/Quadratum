@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj6kk0ubp2ccp"]
+
+[ext_resource type="PackedScene" uid="uid://dpgurf2jxihrw" path="res://units/enemies/enemy.tscn" id="1_58u6d"]
+[ext_resource type="Texture2D" uid="uid://dterptux4qt87" path="res://assets/Enemy-3.png" id="2_q27qs"]
+[ext_resource type="Script" path="res://units/enemies/Movement/random_movement.gd" id="3_n55vg"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_gyowr"]
+points = PackedVector2Array(2.5, 0, -0.5, -6.5, -2.5, -6.5, -2.5, -4.5, 0.5, 0, -2.5, 4.5, -2.5, 6.5, -0.5, 6.5)
+
+[node name="3" instance=ExtResource("1_58u6d")]
+max_health = 40.0
+gem_qty = 2
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = 1.57079
+texture = ExtResource("2_q27qs")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("ConvexPolygonShape2D_gyowr")
+
+[node name="MovementBehavior" parent="." index="3"]
+script = ExtResource("3_n55vg")

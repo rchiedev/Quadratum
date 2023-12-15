@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dm0773o2fnw35"]
+[gd_scene load_steps=24 format=3 uid="uid://dm0773o2fnw35"]
 
 [ext_resource type="Texture2D" uid="uid://bridvg52jj1ml" path="res://assets/Background.png" id="1_d3s83"]
 [ext_resource type="Script" path="res://game/enemy_container.gd" id="2_o2ba0"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ccnfhy1pju2vo" path="res://units/player/player.tscn" id="4_h8ajc"]
 [ext_resource type="Script" path="res://game/drop_container.gd" id="4_qprfs"]
 [ext_resource type="FontFile" uid="uid://dhl7e2l35ot2l" path="res://assets/m5x7.ttf" id="5_rhqd1"]
+[ext_resource type="PackedScene" uid="uid://dj6kk0ubp2ccp" path="res://units/enemies/3/3.tscn" id="6_u5e2j"]
 [ext_resource type="Texture2D" uid="uid://c273gqtikvto5" path="res://assets/HealthBar.png" id="7_bumym"]
 [ext_resource type="Script" path="res://game/wave_counter.gd" id="8_cw3vb"]
 [ext_resource type="Script" path="res://game/wave_timer.gd" id="8_dhhg8"]
@@ -96,7 +97,7 @@ script = ExtResource("4_qprfs")
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 script = ExtResource("2_o2ba0")
-enemy_list = Array[PackedScene]([ExtResource("3_423yo"), ExtResource("4_6y017")])
+enemy_list = Array[PackedScene]([ExtResource("3_423yo"), ExtResource("4_6y017"), ExtResource("6_u5e2j")])
 
 [node name="EnemyTimer" type="Timer" parent="EnemyContainer"]
 unique_name_in_owner = true
@@ -162,18 +163,18 @@ libraries = {
 }
 
 [node name="GemIcon" type="TextureRect" parent="CanvasLayer"]
-offset_left = 9.0
+offset_left = 10.0
 offset_top = 161.0
-offset_right = 49.0
+offset_right = 50.0
 offset_bottom = 201.0
 rotation = -0.785397
 scale = Vector2(0.0949011, 0.0949011)
 texture = ExtResource("13_31xbq")
 
 [node name="GemCounter" type="Label" parent="CanvasLayer"]
-offset_left = 14.0
+offset_left = 15.0
 offset_top = 155.0
-offset_right = 32.0
+offset_right = 33.0
 offset_bottom = 168.0
 text = "999"
 label_settings = SubResource("LabelSettings_uwvs1")
