@@ -9,6 +9,7 @@ const MARKER_SCENE = preload("res://units/marker/marker.tscn")
 
 func _ready():
 	SignalBus.on_enemy_spawn.connect(spawn_enemy)
+	SignalBus.on_player_death.connect(stop_wave)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,10 +29,18 @@ func _on_enemy_timer_timeout():
 	add_child(marker)
 
 func _on_wave_timer_timeout():
+	SignalBus.on_wave_clear.emit()
+	clear_wave()
+
+func clear_wave():
 	stop_wave()
+	GameManager.wave += 1
+	await get_tree().create_timer(3).timeout
+	SceneManager.transition_to_game(get_tree().get_first_node_in_group("player").get_global_transform_with_canvas().origin)
 
 func stop_wave():
 	enemy_timer.stop()
+	wave_timer.stop()
 	for marker in get_children().filter(func(node): return node is Marker):
 		marker.queue_free()
 	for enemy in get_children().filter(func(node): return node is Enemy):

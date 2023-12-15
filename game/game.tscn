@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dm0773o2fnw35"]
+[gd_scene load_steps=19 format=3 uid="uid://dm0773o2fnw35"]
 
 [ext_resource type="Texture2D" uid="uid://bridvg52jj1ml" path="res://assets/Background.png" id="1_d3s83"]
 [ext_resource type="Script" path="res://game/enemy_container.gd" id="2_o2ba0"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ccnfhy1pju2vo" path="res://units/player/player.tscn" id="4_h8ajc"]
 [ext_resource type="FontFile" uid="uid://dhl7e2l35ot2l" path="res://assets/m5x7.ttf" id="5_rhqd1"]
 [ext_resource type="Texture2D" uid="uid://c273gqtikvto5" path="res://assets/HealthBar.png" id="7_bumym"]
+[ext_resource type="Script" path="res://game/wave_counter.gd" id="8_cw3vb"]
 [ext_resource type="Script" path="res://game/wave_timer.gd" id="8_dhhg8"]
 [ext_resource type="Texture2D" uid="uid://c48pikke85ytx" path="res://assets/HealthBar-Progress.png" id="8_o65x0"]
 [ext_resource type="Script" path="res://game/HealthBar.gd" id="9_0eqhm"]
@@ -91,7 +92,7 @@ enemy_list = Array[PackedScene]([ExtResource("3_423yo"), ExtResource("4_6y017")]
 autostart = true
 
 [node name="WaveTimer" type="Timer" parent="EnemyContainer"]
-wait_time = 30.0
+wait_time = 30.4
 one_shot = true
 autostart = true
 
@@ -117,6 +118,7 @@ theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
 text = "Wave 99"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("8_cw3vb")
 
 [node name="WaveTimer" type="Label" parent="CanvasLayer"]
 offset_left = 140.0

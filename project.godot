@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://autoloads/signal_bus.gd"
 GameManager="*res://autoloads/game_manager.gd"
+SceneManager="*res://autoloads/scene_manager.tscn"
 
 [display]
 
@@ -28,6 +29,8 @@ window/size/resizable=false
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://assets/Crosshair.png"
+mouse_cursor/custom_image_hotspot=Vector2(16, 16)
 
 [input]
 
@@ -76,6 +79,7 @@ click={
 2d_physics/layer_3="Player's Projectile"
 2d_physics/layer_4="Enemy"
 2d_physics/layer_5="Enemy's Projectile"
+2d_physics/layer_6="Gems"
 
 [rendering]
 
