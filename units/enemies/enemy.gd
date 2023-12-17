@@ -23,7 +23,7 @@ func _ready():
 	
 	target = get_tree().get_first_node_in_group("player")
 	movement_behavior.init(self)
-	#attacking_behavior.init(self)
+	attacking_behavior.init(self)
 
 func _physics_process(delta):
 	direction = get_direction()
@@ -45,3 +45,6 @@ func take_damage():
 
 func get_direction():
 	return movement_behavior.get_direction()
+
+func _on_attack_speed_timeout():
+	attacking_behavior.shoot()

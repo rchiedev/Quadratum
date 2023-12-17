@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdyepi8bqlhs2"]
+
+[ext_resource type="Texture2D" uid="uid://ris0cik706nw" path="res://assets/Enemy-Bullet.png" id="1_nccbu"]
+[ext_resource type="Script" path="res://units/enemies/enemy_bullet.gd" id="1_stkd5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7avcm"]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0s4bg"]
+radius = 2.0
+
+[node name="EnemyBullet" type="RigidBody2D"]
+collision_layer = 16
+script = ExtResource("1_stkd5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nccbu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7avcm")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+rotation = -3.23136e-05
+shape = SubResource("CircleShape2D_0s4bg")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

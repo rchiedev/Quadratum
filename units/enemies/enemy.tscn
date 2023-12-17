@@ -39,6 +39,10 @@ script = ExtResource("2_7fkt3")
 unique_name_in_owner = true
 script = ExtResource("3_jq17j")
 
+[node name="AttackSpeed" type="Timer" parent="AttackingBehavior"]
+wait_time = 3.0
+autostart = true
+
 [node name="DamagedParticle" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 5
@@ -47,3 +51,5 @@ texture = ExtResource("1_vd4vk")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
+
+[connection signal="timeout" from="AttackingBehavior/AttackSpeed" to="." method="_on_attack_speed_timeout"]

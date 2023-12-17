@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dm0773o2fnw35"]
+[gd_scene load_steps=25 format=3 uid="uid://dm0773o2fnw35"]
 
 [ext_resource type="Texture2D" uid="uid://bridvg52jj1ml" path="res://assets/Background.png" id="1_d3s83"]
 [ext_resource type="Script" path="res://game/enemy_container.gd" id="2_o2ba0"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://dhl7e2l35ot2l" path="res://assets/m5x7.ttf" id="5_rhqd1"]
 [ext_resource type="PackedScene" uid="uid://dj6kk0ubp2ccp" path="res://units/enemies/3/3.tscn" id="6_u5e2j"]
 [ext_resource type="Texture2D" uid="uid://c273gqtikvto5" path="res://assets/HealthBar.png" id="7_bumym"]
+[ext_resource type="PackedScene" uid="uid://qyqu0rqi1tlq" path="res://units/enemies/4/4.tscn" id="7_co4u6"]
 [ext_resource type="Script" path="res://game/wave_counter.gd" id="8_cw3vb"]
 [ext_resource type="Script" path="res://game/wave_timer.gd" id="8_dhhg8"]
 [ext_resource type="Texture2D" uid="uid://c48pikke85ytx" path="res://assets/HealthBar-Progress.png" id="8_o65x0"]
@@ -97,7 +98,7 @@ script = ExtResource("4_qprfs")
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 script = ExtResource("2_o2ba0")
-enemy_list = Array[PackedScene]([ExtResource("3_423yo"), ExtResource("4_6y017"), ExtResource("6_u5e2j")])
+enemy_list = Array[PackedScene]([ExtResource("3_423yo"), ExtResource("4_6y017"), ExtResource("6_u5e2j"), ExtResource("7_co4u6")])
 
 [node name="EnemyTimer" type="Timer" parent="EnemyContainer"]
 unique_name_in_owner = true
@@ -105,7 +106,7 @@ autostart = true
 
 [node name="WaveTimer" type="Timer" parent="EnemyContainer"]
 unique_name_in_owner = true
-wait_time = 30.4
+wait_time = 45.4
 one_shot = true
 autostart = true
 

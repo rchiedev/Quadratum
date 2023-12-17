@@ -9,6 +9,7 @@ signal on_gem_collected()
 
 #Enemy Related
 signal on_enemy_spawn(enemy : Enemy, starting_pos : Vector2)
+signal on_enemy_shoot(bullet : RigidBody2D, starting_pos : Vector2, direction : Vector2)
 signal on_enemy_death(pos : Vector2, qty : int)
 
 #Game Related

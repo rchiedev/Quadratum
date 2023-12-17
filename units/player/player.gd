@@ -53,17 +53,18 @@ func _on_attack_cooldown_timeout():
 	can_shoot = true
 	
 func take_damage(damage : float):
-	change_health(-damage)
-	SignalBus.on_player_hurt.emit()
-	
-	if health <= 0:
-		on_player_death()
-	
-	damaged_particle.restart()
-	damaged_particle.emitting = true
-	
-	can_be_damaged = false
-	invincible_timer.start(0.75)
+	if can_be_damaged:
+		change_health(-damage)
+		SignalBus.on_player_hurt.emit()
+		
+		if health <= 0:
+			on_player_death()
+		
+		damaged_particle.restart()
+		damaged_particle.emitting = true
+		
+		can_be_damaged = false
+		invincible_timer.start(0.75)
 	
 	print("Current HP: ", health)
 
