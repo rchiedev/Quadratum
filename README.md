@@ -17,7 +17,7 @@ Things that i learned from this project are:
 + UI Updates based on game states.
 + Particle effects
 
-Things that is still in development:
+Things that are still in development:
 + Pause Menu
 + Small upgrade systems every round end, purchasable using the gems
 + Proper difficulty ramp and game balance
