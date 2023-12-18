@@ -37,7 +37,7 @@ func clear_wave():
 	stop_wave()
 	GameManager.wave += 1
 	await get_tree().create_timer(3).timeout
-	SceneManager.transition_to_game(get_tree().get_first_node_in_group("player").get_global_transform_with_canvas().origin)
+	SceneManager.transition_to_buy_menu(get_tree().get_first_node_in_group("player").get_global_transform_with_canvas().origin)
 
 func stop_wave():
 	enemy_timer.stop()

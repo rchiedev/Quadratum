@@ -106,7 +106,7 @@ autostart = true
 
 [node name="WaveTimer" type="Timer" parent="EnemyContainer"]
 unique_name_in_owner = true
-wait_time = 45.4
+wait_time = 30.4
 one_shot = true
 autostart = true
 
@@ -115,6 +115,7 @@ script = ExtResource("3_y65bk")
 
 [node name="Player" parent="." instance=ExtResource("4_h8ajc")]
 position = Vector2(161, 92)
+max_health = 10.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

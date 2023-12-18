@@ -12,9 +12,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var velocity = direction * SPEED
+	var velocity = direction * SPEED * delta
 	rotation = velocity.angle()
-	var collision = move_and_collide(velocity * delta)
+	var collision = move_and_collide(velocity)
 	if collision:
 		queue_free()
 
