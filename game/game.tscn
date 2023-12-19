@@ -53,7 +53,7 @@ _data = {
 
 [sub_resource type="LabelSettings" id="LabelSettings_uwvs1"]
 font = ExtResource("5_rhqd1")
-font_size = 12
+font_size = 9
 
 [node name="Game" type="Node2D"]
 
@@ -115,7 +115,6 @@ script = ExtResource("3_y65bk")
 
 [node name="Player" parent="." instance=ExtResource("4_h8ajc")]
 position = Vector2(161, 92)
-max_health = 10.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -124,9 +123,8 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -38.0
-offset_top = 4.0
 offset_right = 38.0
-offset_bottom = 27.0
+offset_bottom = 23.0
 grow_horizontal = 2
 theme = SubResource("Theme_ljycn")
 theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
@@ -137,9 +135,9 @@ script = ExtResource("8_cw3vb")
 
 [node name="WaveTimer" type="Label" parent="CanvasLayer"]
 offset_left = 140.0
-offset_top = 17.0
+offset_top = 13.0
 offset_right = 180.0
-offset_bottom = 40.0
+offset_bottom = 36.0
 theme = SubResource("Theme_6tvcu")
 theme_override_colors/font_color = Color(0.831373, 0.831373, 0.831373, 1)
 text = "99"
@@ -166,21 +164,20 @@ libraries = {
 
 [node name="GemIcon" type="TextureRect" parent="CanvasLayer"]
 offset_left = 10.0
-offset_top = 161.0
-offset_right = 50.0
-offset_bottom = 201.0
-rotation = -0.785397
-scale = Vector2(0.0949011, 0.0949011)
+offset_top = 162.0
+offset_right = 51.0
+offset_bottom = 203.0
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("13_31xbq")
 
 [node name="GemCounter" type="Label" parent="CanvasLayer"]
-offset_left = 15.0
-offset_top = 155.0
-offset_right = 33.0
-offset_bottom = 168.0
+offset_left = 18.0
+offset_top = 158.0
+offset_right = 36.0
+offset_bottom = 171.0
+scale = Vector2(1, 1.02879)
 text = "999"
 label_settings = SubResource("LabelSettings_uwvs1")
-horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("14_u7bm7")
 

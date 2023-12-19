@@ -1,14 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0gmqq0k826p5"]
+[gd_scene load_steps=11 format=3 uid="uid://c0gmqq0k826p5"]
 
 [ext_resource type="Texture2D" uid="uid://cjgvw5gvpfh0i" path="res://assets/Card-Upgrade.png" id="1_gb1yw"]
 [ext_resource type="Script" path="res://game/buy_upgrade_menu.gd" id="1_l4pv5"]
 [ext_resource type="Texture2D" uid="uid://bridvg52jj1ml" path="res://assets/Background.png" id="2_qxygm"]
 [ext_resource type="Texture2D" uid="uid://bdw34d2t2drg6" path="res://assets/Gem.png" id="3_njcn4"]
 [ext_resource type="FontFile" uid="uid://dhl7e2l35ot2l" path="res://assets/m5x7.ttf" id="4_4p8nu"]
+[ext_resource type="Texture2D" uid="uid://tr7v5tv5r3fv" path="res://assets/Refresh.png" id="6_pavwn"]
+[ext_resource type="Texture2D" uid="uid://cqso2av28621n" path="res://assets/Refresh-Disabled.png" id="7_q5qmw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1tx6n"]
 font = ExtResource("4_4p8nu")
-font_size = 12
+font_size = 13
+
+[sub_resource type="LabelSettings" id="LabelSettings_8oc2j"]
+font_size = 6
 
 [sub_resource type="Theme" id="Theme_mcgmv"]
 default_font = ExtResource("4_4p8nu")
@@ -16,6 +21,7 @@ default_font_size = 12
 
 [node name="BuyUpgradeMenu" type="CanvasLayer"]
 script = ExtResource("1_l4pv5")
+refresh_cost = 2
 
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.67451)
@@ -37,32 +43,83 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 8
 
-[node name="GemCounter" type="Label" parent="VBoxContainer/MarginContainer2"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
 layout_mode = 2
-text = "999"
-label_settings = SubResource("LabelSettings_1tx6n")
+size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2"]
-visible = false
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(4, 4)
 layout_mode = 2
+size_flags_vertical = 4
 texture = ExtResource("3_njcn4")
+
+[node name="GemCounter" type="Label" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "999
+"
+label_settings = SubResource("LabelSettings_1tx6n")
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Upgrade1" type="TextureButton" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_gb1yw")
+stretch_mode = 0
+
+[node name="Upgrade2" type="TextureButton" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_gb1yw")
+
+[node name="Upgrade3" type="TextureButton" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_gb1yw")
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="RefreshButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/Control2"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = -8.0
+offset_right = 62.0
+offset_bottom = 8.0
+texture_normal = ExtResource("6_pavwn")
+texture_disabled = ExtResource("7_q5qmw")
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/Control2"]
+offset_left = 26.0
+offset_top = 11.0
+offset_right = 29.0
+offset_bottom = 14.0
+size_flags_vertical = 4
+texture = ExtResource("3_njcn4")
+
+[node name="RefreshCost" type="Label" parent="VBoxContainer/HBoxContainer/Control2"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 33.0
+offset_top = 7.0
+offset_right = 38.0
+offset_bottom = 19.0
 size_flags_horizontal = 4
-
-[node name="Upgrade1" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("1_gb1yw")
-
-[node name="Upgrade2" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("1_gb1yw")
-
-[node name="Upgrade3" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("1_gb1yw")
+text = "5"
+label_settings = SubResource("LabelSettings_8oc2j")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -85,4 +142,5 @@ layout_mode = 2
 theme = SubResource("Theme_mcgmv")
 text = "Next Wave (Wave 99)"
 
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Control2/RefreshButton" to="." method="_on_refresh_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/NextWave" to="." method="_on_next_wave_pressed"]
