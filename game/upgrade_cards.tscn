@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://lga66hytf41s"]
+
+[ext_resource type="Texture2D" uid="uid://dw7g4tdnj4tuf" path="res://assets/Card-Upgrade1.png" id="1_aim1n"]
+[ext_resource type="Script" path="res://game/upgrade_cards.gd" id="1_h1dk3"]
+[ext_resource type="Texture2D" uid="uid://cjgvw5gvpfh0i" path="res://assets/Card-Upgrade.png" id="1_hbeg7"]
+[ext_resource type="FontFile" uid="uid://dhl7e2l35ot2l" path="res://assets/m5x7.ttf" id="2_hpg1i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y35t7"]
+font_size = 6
+font_color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lr2mf"]
+font = ExtResource("2_hpg1i")
+font_size = 8
+font_color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[node name="UpgradeCard" type="TextureButton"]
+offset_right = 60.0
+offset_bottom = 90.0
+texture_normal = ExtResource("1_hbeg7")
+script = ExtResource("1_h1dk3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_aim1n")
+
+[node name="Name" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 7.0
+offset_top = 34.0
+offset_right = 54.0
+offset_bottom = 43.0
+text = "Rune of Cycle III"
+label_settings = SubResource("LabelSettings_y35t7")
+
+[node name="Description" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 49.0
+offset_right = 56.0
+offset_bottom = 70.0
+text = "Increase Attack Speed by 999%"
+label_settings = SubResource("LabelSettings_lr2mf")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

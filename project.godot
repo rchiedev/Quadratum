@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SignalBus="*res://autoloads/signal_bus.gd"
-GameManager="*res://autoloads/game_manager.gd"
+GameManager="*res://autoloads/game_manager.tscn"
 SceneManager="*res://autoloads/scene_manager.tscn"
 
 [display]

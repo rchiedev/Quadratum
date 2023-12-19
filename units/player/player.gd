@@ -47,7 +47,10 @@ func shoot():
 	bullet.rotation = bullet_direction.angle()
 	SignalBus.on_player_shoot.emit(bullet, self.global_position, bullet_direction)
 	can_shoot = false
-	attack_cooldown.start(0.5)
+	
+	var bonus_aspd = GameManager.upgrades["aspd"] if GameManager.upgrades.has("aspd") else 0
+	var final_atk_cd = clamp(0.5 / (1.0 + (bonus_aspd /100.0)), 0.1, 2.5)
+	attack_cooldown.start(final_atk_cd)
 
 func _on_attack_cooldown_timeout():
 	can_shoot = true
