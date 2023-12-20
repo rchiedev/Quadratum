@@ -15,3 +15,4 @@ signal on_enemy_death(pos : Vector2, qty : int)
 #Game Related
 signal on_wave_timer_countdown(time : float)
 signal on_wave_clear()
+signal on_gem_spent()

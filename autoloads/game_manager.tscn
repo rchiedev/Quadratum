@@ -1,8 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3y1midygak58"]
+[gd_scene load_steps=5 format=3 uid="uid://c3y1midygak58"]
 
 [ext_resource type="Script" path="res://autoloads/game_manager.gd" id="1_lt5wu"]
-[ext_resource type="Resource" uid="uid://ckcxutapenn52" path="res://upgrades/rune_of_cycle.tres" id="2_l7bc8"]
+[ext_resource type="Resource" uid="uid://ckcxutapenn52" path="res://upgrades/rune_of_cycle1.tres" id="2_l7bc8"]
+[ext_resource type="Resource" uid="uid://caequ15rbctdp" path="res://upgrades/rune_of_cycle2.tres" id="3_xh1n7"]
+[ext_resource type="Resource" uid="uid://cmqrjo5l27tme" path="res://upgrades/rune_of_cycle3.tres" id="4_xw70r"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_lt5wu")
-upgrade_list = Array[Resource("res://upgrades/upgrade.gd")]([ExtResource("2_l7bc8")])
+silver_upgrades = Array[Resource("res://upgrades/upgrade.gd")]([ExtResource("2_l7bc8")])
+gold_upgrades = Array[Resource("res://upgrades/upgrade.gd")]([ExtResource("3_xh1n7")])
+prismatic_upgrades = Array[Resource("res://upgrades/upgrade.gd")]([ExtResource("4_xw70r")])

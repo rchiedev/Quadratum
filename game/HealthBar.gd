@@ -13,7 +13,3 @@ func set_hp_bar(health, max_health):
 
 func shake_bar():
 	animation_player.play("shake")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

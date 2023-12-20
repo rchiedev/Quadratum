@@ -2,31 +2,56 @@ extends TextureButton
 
 @onready var name_label = %Name
 @onready var description = %Description
-@onready var texture_rect = $TextureRect
+@onready var texture_rect = %TextureRect
+@onready var gem_image = $GemImage
+@onready var price_label = %Price
 
-var data : Upgrade
+const CARD_UPGRADE_1 = preload("res://assets/Card-Upgrade1.png")
+const CARD_UPGRADE_2 = preload("res://assets/Card-Upgrade2.png")
+const CARD_UPGRADE_3 = preload("res://assets/Card-Upgrade3.png")
+
+var upgrade : Upgrade
+var price : int = 5
 
 func _ready():
-	self.disabled = false
-	self.visible = true
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	SignalBus.on_gem_spent.connect(set_price_label)
 
 func set_upgrade_data():
-	data = GameManager.upgrade_list.pick_random()
-	name_label.text = data.name
-	description.text = data.description
-	
-	texture_rect.visible = true
-	name_label.visible = true
-	description.visible = true
-	self.disabled = false
+	upgrade = GameManager.get_upgrade()
+	name_label.text = upgrade.name
+	description.text = upgrade.description
+	if upgrade.rarity == 0:
+		texture_rect.texture = CARD_UPGRADE_1
+		price = 3 + GameManager.wave
+	elif upgrade.rarity == 1:
+		texture_rect.texture = CARD_UPGRADE_2
+		price = 7 + GameManager.wave
+	else:
+		texture_rect.texture = CARD_UPGRADE_3
+		price = 14 + GameManager.wave
+		
+	set_visibility(true)
+	set_price_label()
 
 func _on_pressed():
-	GameManager.apply_upgrade(data)
-	self.disabled = true
-	texture_rect.visible = false
-	name_label.visible = false
-	description.visible = false
+	GameManager.apply_upgrade(upgrade)
+	GameManager.gems -= price
+	SignalBus.on_gem_spent.emit()
+	set_visibility(false)
+
+func set_price_label():
+	price_label.text = str(price)
+	price_label.label_settings.font_color = Color.html("#232323")
+	
+	if GameManager.gems - price < 0:
+		price_label.label_settings.font_color = Color.html("#d95763")
+		self.disabled = true
+
+func set_visibility(boolean):
+	texture_rect.visible = boolean
+	name_label.visible = boolean
+	description.visible = boolean
+	price_label.visible = boolean
+	gem_image.visible = boolean
+	self.disabled = !boolean
+	

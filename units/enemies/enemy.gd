@@ -25,7 +25,7 @@ func _ready():
 	movement_behavior.init(self)
 	attacking_behavior.init(self)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	direction = get_direction()
 	rotation = direction.angle()
 	velocity = direction * speed

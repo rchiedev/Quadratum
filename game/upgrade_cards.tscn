@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://lga66hytf41s"]
+[gd_scene load_steps=9 format=3 uid="uid://lga66hytf41s"]
 
 [ext_resource type="Texture2D" uid="uid://dw7g4tdnj4tuf" path="res://assets/Card-Upgrade1.png" id="1_aim1n"]
 [ext_resource type="Script" path="res://game/upgrade_cards.gd" id="1_h1dk3"]
 [ext_resource type="Texture2D" uid="uid://cjgvw5gvpfh0i" path="res://assets/Card-Upgrade.png" id="1_hbeg7"]
 [ext_resource type="FontFile" uid="uid://dhl7e2l35ot2l" path="res://assets/m5x7.ttf" id="2_hpg1i"]
+[ext_resource type="Texture2D" uid="uid://bdw34d2t2drg6" path="res://assets/Gem.png" id="5_p0o3h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y35t7"]
 font_size = 6
@@ -14,6 +15,10 @@ font = ExtResource("2_hpg1i")
 font_size = 8
 font_color = Color(0.137255, 0.137255, 0.137255, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_3od2h"]
+font_size = 6
+font_color = Color(0.137255, 0.137255, 0.137255, 1)
+
 [node name="UpgradeCard" type="TextureButton"]
 offset_right = 60.0
 offset_bottom = 90.0
@@ -21,6 +26,7 @@ texture_normal = ExtResource("1_hbeg7")
 script = ExtResource("1_h1dk3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -47,5 +53,25 @@ text = "Increase Attack Speed by 999%"
 label_settings = SubResource("LabelSettings_lr2mf")
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="GemImage" type="TextureRect" parent="."]
+offset_left = 24.0
+offset_top = 79.0
+offset_right = 27.0
+offset_bottom = 82.0
+size_flags_vertical = 4
+texture = ExtResource("5_p0o3h")
+
+[node name="Price" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 31.0
+offset_top = 75.0
+offset_right = 36.0
+offset_bottom = 87.0
+size_flags_horizontal = 4
+text = "9"
+label_settings = SubResource("LabelSettings_3od2h")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -14,16 +14,12 @@ extends CanvasLayer
 func _ready():
 	set_wave_counter()
 	set_gems_counter()
-	refresh_cost_label.text = str(refresh_cost)
-	
-	if GameManager.gems - refresh_cost <= 0:
-		disable_refresh()
-	
+	set_refresh_label()
 	set_upgrade_cards()
+	
+	SignalBus.on_gem_spent.connect(set_gems_counter)
+	SignalBus.on_gem_spent.connect(set_refresh_label)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 	
 func set_wave_counter():
 	next_wave_btn.text = "Next Wave (Wave " + str(GameManager.wave) + ")"
@@ -38,13 +34,23 @@ func _on_next_wave_pressed():
 func _on_refresh_button_pressed():
 	GameManager.gems -= refresh_cost
 	
+	refresh_cost += 1
+	set_refresh_label()
+	
 	if GameManager.gems - refresh_cost < 0:
 		disable_refresh()
-		
+	
 	set_gems_counter()
 	set_upgrade_cards()
 	
 	print("Refreshing Shop")
+
+func set_refresh_label():
+	refresh_cost_label.text = str(refresh_cost)
+	refresh_cost_label.label_settings.font_color = Color.html("#d3d3d3")
+	if GameManager.gems - refresh_cost < 0:
+		refresh_cost_label.label_settings.font_color = Color.html("#d95763")
+		disable_refresh()
 
 func disable_refresh():
 	refresh_button.disabled = true

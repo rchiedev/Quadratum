@@ -6,11 +6,6 @@ func _ready():
 	SignalBus.on_enemy_death.connect(spawn_drop)
 	SignalBus.on_wave_clear.connect(clear_gems)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func spawn_drop(pos : Vector2, qty : int):
 	for i in qty:
 		var gem = GEM_SCENE.instantiate()

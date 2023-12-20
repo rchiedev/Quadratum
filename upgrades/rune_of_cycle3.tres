@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://cmqrjo5l27tme"]
+
+[ext_resource type="Script" path="res://upgrades/upgrade.gd" id="1_3lgmu"]
+
+[resource]
+script = ExtResource("1_3lgmu")
+id = "aspd"
+name = "Rune of Cycle III"
+description = "Increase Attack Speed by 20%"
+rarity = 2
+operator = 0
+value = 20.0

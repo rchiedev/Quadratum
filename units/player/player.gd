@@ -26,7 +26,7 @@ func _ready():
 	SignalBus.on_hp_changed.emit(health, max_health)
 	SignalBus.on_wave_clear.connect(disable_movement)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not is_dead and can_move:
 		look_at(get_global_mouse_position())
 		

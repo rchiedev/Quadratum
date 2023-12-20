@@ -12,7 +12,7 @@ func _ready():
 	SignalBus.on_player_death.connect(stop_wave)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	SignalBus.on_wave_timer_countdown.emit(wave_timer.time_left)
 
 func spawn_enemy(enemy : Enemy, starting_pos : Vector2):

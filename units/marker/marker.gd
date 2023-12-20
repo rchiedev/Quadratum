@@ -10,10 +10,6 @@ func _ready():
 	emit_particle()
 	rotation = deg_to_rad(randf_range(-20.0, 20.0))
 	animation_player.play("spawn")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 	
 func emit_particle():
 	particle.restart()

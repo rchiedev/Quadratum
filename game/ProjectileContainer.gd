@@ -6,10 +6,6 @@ func _ready():
 	SignalBus.on_enemy_shoot.connect(spawn_bullet)
 	SignalBus.on_wave_clear.connect(clear_bullets)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func spawn_bullet(bullet : RigidBody2D, starting_pos : Vector2, direction : Vector2):
 	bullet.global_position = starting_pos
 	bullet.direction = direction
