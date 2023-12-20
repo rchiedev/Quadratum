@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bdw34d2t2drg6" path="res://assets/Gem.png" id="5_p0o3h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y35t7"]
-font_size = 6
+font = ExtResource("2_hpg1i")
+font_size = 8
 font_color = Color(0.137255, 0.137255, 0.137255, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_lr2mf"]
@@ -35,26 +36,29 @@ texture = ExtResource("1_aim1n")
 [node name="Name" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 7.0
-offset_top = 34.0
-offset_right = 54.0
-offset_bottom = 43.0
-text = "Rune of Cycle III"
+offset_left = 4.0
+offset_top = 23.0
+offset_right = 55.0
+offset_bottom = 40.0
+text = "Rune of Gunpower III"
 label_settings = SubResource("LabelSettings_y35t7")
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Description" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 3.0
-offset_top = 49.0
+offset_top = 47.0
 offset_right = 56.0
-offset_bottom = 70.0
+offset_bottom = 71.0
 text = "Increase Attack Speed by 999%"
 label_settings = SubResource("LabelSettings_lr2mf")
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="GemImage" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 24.0
 offset_top = 79.0
 offset_right = 27.0
@@ -64,6 +68,7 @@ texture = ExtResource("5_p0o3h")
 
 [node name="Price" type="Label" parent="."]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 31.0
 offset_top = 75.0
 offset_right = 36.0

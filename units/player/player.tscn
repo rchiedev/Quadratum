@@ -8,7 +8,7 @@
 size = Vector2(6, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_20xth"]
-radius = 16.0
+radius = 20.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_taawa"]
 lifetime_randomness = 0.5
@@ -35,6 +35,7 @@ shape = SubResource("RectangleShape2D_gsxaj")
 [node name="CollectionArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 32
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea"]
 shape = SubResource("CircleShape2D_20xth")

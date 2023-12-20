@@ -18,6 +18,7 @@ var target : Player
 var direction : Vector2
 
 func _ready():
+	max_health = max_health + (GameManager.wave * 2.5)
 	health = max_health
 	damage = damage + GameManager.wave
 	
@@ -35,9 +36,9 @@ func emit_particle():
 	damaged_particle.restart()
 	damaged_particle.emitting = true
 
-func take_damage():
+func take_damage(value : float):
 	emit_particle()
-	health -= 10.0
+	health -= value
 	
 	if health <= 0.0:
 		SignalBus.on_enemy_death.emit(self.global_position, self.gem_qty)

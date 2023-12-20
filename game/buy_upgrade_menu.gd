@@ -35,15 +35,12 @@ func _on_refresh_button_pressed():
 	GameManager.gems -= refresh_cost
 	
 	refresh_cost += 1
-	set_refresh_label()
 	
 	if GameManager.gems - refresh_cost < 0:
 		disable_refresh()
-	
-	set_gems_counter()
+		
+	SignalBus.on_gem_spent.emit()
 	set_upgrade_cards()
-	
-	print("Refreshing Shop")
 
 func set_refresh_label():
 	refresh_cost_label.text = str(refresh_cost)

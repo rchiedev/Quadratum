@@ -3,8 +3,6 @@ extends Node2D
 @onready var enemy_timer = %EnemyTimer
 @onready var wave_timer = %WaveTimer
 
-@export var enemy_list : Array[PackedScene]
-
 const MARKER_SCENE = preload("res://units/marker/marker.tscn")
 
 func _ready():
@@ -26,7 +24,7 @@ func _on_enemy_timer_timeout():
 	
 	var marker = MARKER_SCENE.instantiate()
 	marker.global_position = Vector2(global_position_x, global_position_y)
-	marker.enemy_scene = enemy_list.pick_random()
+	marker.enemy_scene = GameManager.get_enemy()
 	add_child(marker)
 
 func _on_wave_timer_timeout():

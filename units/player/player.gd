@@ -25,6 +25,9 @@ func _ready():
 	health = max_health
 	SignalBus.on_hp_changed.emit(health, max_health)
 	SignalBus.on_wave_clear.connect(disable_movement)
+	
+	var bonus_mspd = GameManager.upgrades["mspd"] if GameManager.upgrades.has("mspd") else 0
+	mspd = clamp(mspd * (1.0 + (bonus_mspd /100.0)), 0.1, 500.0)
 
 func _physics_process(_delta):
 	if not is_dead and can_move:

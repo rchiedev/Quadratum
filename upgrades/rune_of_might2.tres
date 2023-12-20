@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://del6d7ppsa54x"]
+
+[ext_resource type="Script" path="res://upgrades/upgrade.gd" id="1_i6a4w"]
+
+[resource]
+script = ExtResource("1_i6a4w")
+id = "dmg"
+name = "Rune of Might II"
+description = "Increase Damage by 10%"
+rarity = 1
+operator = 0
+value = 10.0

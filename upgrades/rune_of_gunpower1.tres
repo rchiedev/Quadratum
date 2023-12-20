@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://bl2pb8128rmm8"]
+
+[ext_resource type="Script" path="res://upgrades/upgrade.gd" id="1_8yn7j"]
+
+[resource]
+script = ExtResource("1_8yn7j")
+id = "flat_dmg"
+name = "Rune of Gunpower I"
+description = "Increase Damage by 1"
+rarity = 0
+operator = 0
+value = 1.0

@@ -1,12 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3y1midygak58"]
+[gd_scene load_steps=18 format=3 uid="uid://c3y1midygak58"]
 
 [ext_resource type="Script" path="res://autoloads/game_manager.gd" id="1_lt5wu"]
 [ext_resource type="Resource" uid="uid://ckcxutapenn52" path="res://upgrades/rune_of_cycle1.tres" id="2_l7bc8"]
+[ext_resource type="Resource" uid="uid://c1y7sav3knq2w" path="res://upgrades/rune_of_haste1.tres" id="3_kdq3c"]
 [ext_resource type="Resource" uid="uid://caequ15rbctdp" path="res://upgrades/rune_of_cycle2.tres" id="3_xh1n7"]
+[ext_resource type="Resource" uid="uid://kee7syw7vqys" path="res://upgrades/rune_of_might1.tres" id="4_fsqra"]
 [ext_resource type="Resource" uid="uid://cmqrjo5l27tme" path="res://upgrades/rune_of_cycle3.tres" id="4_xw70r"]
+[ext_resource type="Resource" uid="uid://dw07lb2e38sb5" path="res://upgrades/rune_of_haste2.tres" id="5_1t0xg"]
+[ext_resource type="Resource" uid="uid://bl2pb8128rmm8" path="res://upgrades/rune_of_gunpower1.tres" id="5_uplex"]
+[ext_resource type="Resource" uid="uid://del6d7ppsa54x" path="res://upgrades/rune_of_might2.tres" id="7_kjafy"]
+[ext_resource type="Resource" uid="uid://dn01dloigcv0t" path="res://upgrades/rune_of_haste3.tres" id="7_rehhx"]
+[ext_resource type="Resource" uid="uid://c8xt5efcjeedj" path="res://upgrades/rune_of_gunpower2.tres" id="9_px5j3"]
+[ext_resource type="Resource" uid="uid://cy0pqih86cvfg" path="res://upgrades/rune_of_might3.tres" id="10_btm2v"]
+[ext_resource type="Resource" uid="uid://6ras8tp57lu1" path="res://upgrades/rune_of_gunpower3.tres" id="13_4ksor"]
+[ext_resource type="PackedScene" uid="uid://bs0djvvyb3b0e" path="res://units/enemies/1/1.tscn" id="14_4pudk"]
+[ext_resource type="PackedScene" uid="uid://cai7u1ypb8wif" path="res://units/enemies/2/2.tscn" id="15_t430s"]
+[ext_resource type="PackedScene" uid="uid://dj6kk0ubp2ccp" path="res://units/enemies/3/3.tscn" id="16_1vmv8"]
+[ext_resource type="PackedScene" uid="uid://qyqu0rqi1tlq" path="res://units/enemies/4/4.tscn" id="17_empc0"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_lt5wu")
-silver_upgrades = Array[Resource("res://upgrades/upgrade.gd")]([ExtResource("2_l7bc8")])
-gold_upgrades = Array[Resource("res://upgrades/upgrade.gd")]([ExtResource("3_xh1n7")])
-prismatic_upgrades = Array[Resource("res://upgrades/upgrade.gd")]([ExtResource("4_xw70r")])
+silver_upgrades = Array[Resource("res://upgrades/upgrade.gd")]([ExtResource("2_l7bc8"), ExtResource("3_kdq3c"), ExtResource("4_fsqra"), ExtResource("5_uplex")])
+gold_upgrades = Array[Resource("res://upgrades/upgrade.gd")]([ExtResource("3_xh1n7"), ExtResource("5_1t0xg"), ExtResource("7_kjafy"), ExtResource("9_px5j3")])
+prismatic_upgrades = Array[Resource("res://upgrades/upgrade.gd")]([ExtResource("4_xw70r"), ExtResource("7_rehhx"), ExtResource("10_btm2v"), ExtResource("13_4ksor")])
+enemy_list = Array[PackedScene]([ExtResource("14_4pudk"), ExtResource("15_t430s"), ExtResource("16_1vmv8"), ExtResource("17_empc0")])
