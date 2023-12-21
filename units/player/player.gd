@@ -20,6 +20,7 @@ var is_dead : bool = false
 @export var max_health : float = 10.0
 var regen_value : float = 1.0
 var health : float
+var bullet_amt : int = 1
 
 func _ready():
 	health = max_health
@@ -28,6 +29,8 @@ func _ready():
 	
 	var bonus_mspd = GameManager.upgrades["mspd"] if GameManager.upgrades.has("mspd") else 0
 	mspd = clamp(mspd * (1.0 + (bonus_mspd /100.0)), 0.1, 500.0)
+	
+	bullet_amt = 1 + GameManager.upgrades["multishot"] if GameManager.upgrades.has("multishot") else 1
 
 func _physics_process(_delta):
 	if not is_dead and can_move:
@@ -45,11 +48,17 @@ func _physics_process(_delta):
 			shoot()
 
 func shoot():
-	var bullet = PLAYER_BULLET_SCENE.instantiate()
-	var bullet_direction = global_position.direction_to(get_global_mouse_position()).normalized()
-	bullet.rotation = bullet_direction.angle()
-	SignalBus.on_player_shoot.emit(bullet, self.global_position, bullet_direction)
-	can_shoot = false
+	var angle_between : float = 360 / bullet_amt
+	
+	for i in bullet_amt:
+		var bullet = PLAYER_BULLET_SCENE.instantiate()
+		
+		var main_direction = global_position.direction_to(get_global_mouse_position()).normalized()
+		var final_direction = main_direction.rotated(deg_to_rad(angle_between * i))
+		
+		bullet.rotation = final_direction.angle()
+		SignalBus.on_player_shoot.emit(bullet, self.global_position, final_direction)
+		can_shoot = false
 	
 	var bonus_aspd = GameManager.upgrades["aspd"] if GameManager.upgrades.has("aspd") else 0
 	var final_atk_cd = clamp(0.5 / (1.0 + (bonus_aspd /100.0)), 0.1, 2.5)

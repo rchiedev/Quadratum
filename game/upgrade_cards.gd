@@ -16,8 +16,8 @@ var price : int = 5
 func _ready():
 	SignalBus.on_gem_spent.connect(set_price_label)
 
-func set_upgrade_data():
-	upgrade = GameManager.get_upgrade()
+func set_upgrade_data(first_shop : bool):
+	upgrade = GameManager.get_upgrade(first_shop)
 	name_label.text = upgrade.name
 	description.text = upgrade.description
 	if upgrade.rarity == 0:
@@ -36,12 +36,14 @@ func set_upgrade_data():
 func _on_pressed():
 	GameManager.apply_upgrade(upgrade)
 	GameManager.gems -= price
+	
 	SignalBus.on_gem_spent.emit()
 	set_visibility(false)
 
 func set_price_label():
 	price_label.text = str(price)
 	price_label.label_settings.font_color = Color.html("#232323")
+	print("Purchasing this will make your gems be : ", GameManager.gems - price)
 	
 	if GameManager.gems - price < 0:
 		price_label.label_settings.font_color = Color.html("#d95763")

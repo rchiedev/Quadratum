@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://cm70mferkj1vv"]
+
+[ext_resource type="Script" path="res://upgrades/upgrade.gd" id="1_fhkh0"]
+
+[resource]
+script = ExtResource("1_fhkh0")
+id = "health"
+name = "Rune of Vitality I"
+description = "Increase player's max health by 5"
+rarity = 0
+operator = 0
+value = 5.0

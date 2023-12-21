@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://bxnkw5r3mkod5"]
+
+[ext_resource type="Script" path="res://upgrades/upgrade.gd" id="1_583nf"]
+
+[resource]
+script = ExtResource("1_583nf")
+id = "multishot"
+name = "Rune of Multishots"
+description = "+1 Bullet shot at an angle"
+rarity = 2
+operator = 0
+value = 1.0

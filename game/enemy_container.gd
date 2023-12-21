@@ -19,13 +19,17 @@ func spawn_enemy(enemy : Enemy, starting_pos : Vector2):
 	add_child(enemy)
 
 func _on_enemy_timer_timeout():
-	var global_position_x = randi_range(16, 304)
-	var global_position_y = randi_range(16, 164)
+	var spawn = floor(GameManager.wave / 5)
 	
-	var marker = MARKER_SCENE.instantiate()
-	marker.global_position = Vector2(global_position_x, global_position_y)
-	marker.enemy_scene = GameManager.get_enemy()
-	add_child(marker)
+	var x = randi_range(2 + spawn, 4 + spawn)
+	for i in x:
+		var global_position_x = randi_range(16, 304)
+		var global_position_y = randi_range(16, 164)
+		
+		var marker = MARKER_SCENE.instantiate()
+		marker.global_position = Vector2(global_position_x, global_position_y)
+		marker.enemy_scene = GameManager.get_enemy()
+		add_child(marker)
 
 func _on_wave_timer_timeout():
 	SignalBus.on_wave_clear.emit()

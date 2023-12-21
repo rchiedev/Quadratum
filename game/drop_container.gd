@@ -5,6 +5,7 @@ const GEM_SCENE = preload("res://units/gem/gem.tscn")
 func _ready():
 	SignalBus.on_enemy_death.connect(spawn_drop)
 	SignalBus.on_wave_clear.connect(clear_gems)
+	SignalBus.on_player_death.connect(clear_gems)
 
 func spawn_drop(pos : Vector2, qty : int):
 	for i in qty:

@@ -7,6 +7,6 @@ script = ExtResource("1_pxhqu")
 id = "mspd"
 name = "Rune of Haste III"
 description = "Increase Movement Speed by 15%"
-rarity = 1
+rarity = 2
 operator = 0
 value = 15.0

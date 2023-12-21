@@ -6,7 +6,8 @@ class_name Enemy
 @onready var attacking_behavior = %AttackingBehavior
 
 @export var max_health : float = 20.0
-@export var speed : float = 25.0
+@export var growth_per_wave : float = 2.5
+@export var speed : float = 20.0
 @export var damage : float = 10.0
 @export var gem_qty : int = 1
 
@@ -18,7 +19,7 @@ var target : Player
 var direction : Vector2
 
 func _ready():
-	max_health = max_health + (GameManager.wave * 2.5)
+	max_health = max_health + (GameManager.wave * growth_per_wave)
 	health = max_health
 	damage = damage + GameManager.wave
 	

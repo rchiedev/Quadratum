@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://y3jp8tynqpjd"]
+
+[ext_resource type="Script" path="res://upgrades/upgrade.gd" id="1_3fnn6"]
+
+[resource]
+script = ExtResource("1_3fnn6")
+id = "regen"
+name = "Rune of Regeneration I"
+description = "Increase player's regeneration by 0.2"
+rarity = 0
+operator = 0
+value = 0.2

@@ -18,11 +18,16 @@ func reset_game_stats():
 	upgrades = {}
 
 func get_enemy():
-	var max_index = clamp(wave - 1, 0, enemy_list.size())
+	var max_index = clamp(wave - 1, 0, enemy_list.size() - 1)
 	var random_index = randi_range(0, max_index)
-	return enemy_list[random_index]
+	var enemy_scene = enemy_list[random_index]
+	
+	if wave == 7:
+		enemy_scene = enemy_list[randi_range(0, 1)]
+	
+	return enemy_scene
 
-func get_upgrade():
+func get_upgrade(first_shop : bool):
 	var x = randi_range(1, 100)
 	
 	var silver_chance = 90
@@ -46,6 +51,8 @@ func get_upgrade():
 	
 	#silver_chance = 33
 	#gold_chance = 33
+	if wave % 5 == 0 and first_shop:
+		return prismatic_upgrades.pick_random()
 
 	if x <= silver_chance:
 		return silver_upgrades.pick_random()

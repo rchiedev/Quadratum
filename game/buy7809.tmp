@@ -21,6 +21,7 @@ default_font_size = 12
 
 [node name="BuyUpgradeMenu" type="CanvasLayer"]
 script = ExtResource("1_l4pv5")
+refresh_cost = 2
 
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.67451)
