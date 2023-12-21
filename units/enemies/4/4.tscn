@@ -10,7 +10,7 @@ radius = 2.0
 height = 12.0
 
 [node name="4" instance=ExtResource("1_al86b")]
-max_health = 40.0
+max_health = 30.0
 speed = 15.0
 gem_qty = 2
 

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://units/enemies/Movement/random_movement.gd" id="3_pnlgi"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_lqn7h"]
-points = PackedVector2Array(2.5, 0, -0.5, 3.5, -2.5, 3.5, -2.5, -3.5, -0.5, -3.5)
+points = PackedVector2Array(2.5, 0, -1, 4.5, -3, 4.5, -3, -4.5, -1, -4.5)
 
 [node name="2" instance=ExtResource("1_gi4g4")]
 max_health = 6.0

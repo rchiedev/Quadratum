@@ -1,4 +1,5 @@
 extends AttackingBehavior
+class_name ShootPlayer
 
 const ENEMY_BULLET_SCENE = preload("res://units/enemies/enemy_bullet.tscn")
 

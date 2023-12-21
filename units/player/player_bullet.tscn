@@ -11,6 +11,7 @@ size = Vector2(3, 3)
 
 [node name="PlayerBullet" type="RigidBody2D"]
 collision_layer = 4
+gravity_scale = 0.0
 script = ExtResource("1_hgo2b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -20,8 +21,9 @@ texture = ExtResource("1_0ifus")
 shape = SubResource("RectangleShape2D_dp7b0")
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 8
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_bkomn")

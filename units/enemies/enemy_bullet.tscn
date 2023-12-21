@@ -10,7 +10,8 @@ radius = 2.0
 radius = 2.0
 
 [node name="EnemyBullet" type="RigidBody2D"]
-collision_layer = 16
+collision_layer = 0
+gravity_scale = 0.0
 script = ExtResource("1_stkd5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -20,8 +21,9 @@ texture = ExtResource("1_nccbu")
 shape = SubResource("CircleShape2D_7avcm")
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 16
+collision_layer = 0
 collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 rotation = -3.23136e-05

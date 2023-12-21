@@ -8,3 +8,6 @@ func init(parent : Enemy):
 
 func get_direction():
 	return Vector2.ZERO
+
+func get_rotation_angle():
+	return _parent.direction.angle()

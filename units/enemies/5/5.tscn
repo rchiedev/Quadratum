@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtpg2u4g48f6k"]
+
+[ext_resource type="PackedScene" uid="uid://dpgurf2jxihrw" path="res://units/enemies/enemy.tscn" id="1_xlvxn"]
+[ext_resource type="Texture2D" uid="uid://fghakkyccg0b" path="res://assets/Enemy-5.png" id="2_8omhi"]
+[ext_resource type="Script" path="res://units/enemies/Movement/stay_in_place.gd" id="3_trw27"]
+[ext_resource type="Script" path="res://units/enemies/Attacks/split_shot.gd" id="4_8y8g8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jm4y1"]
+size = Vector2(5.65686, 5.65685)
+
+[node name="5" instance=ExtResource("1_xlvxn")]
+max_health = 10.0
+growth_per_wave = 2.0
+speed = 0.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_8omhi")
+
+[node name="CollisionShape2D" parent="." index="2"]
+rotation = -0.785397
+shape = SubResource("RectangleShape2D_jm4y1")
+
+[node name="MovementBehavior" parent="." index="3"]
+script = ExtResource("3_trw27")
+rotate_in_place = true
+
+[node name="AttackingBehavior" parent="." index="4"]
+script = ExtResource("4_8y8g8")
+
+[node name="AttackSpeed" parent="AttackingBehavior" index="0"]
+wait_time = 3.5

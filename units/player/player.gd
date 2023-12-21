@@ -23,12 +23,18 @@ var health : float
 var bullet_amt : int = 1
 
 func _ready():
+	var bonus_health = GameManager.upgrades["health"] if GameManager.upgrades.has("health") else 0
+	max_health += bonus_health
 	health = max_health
+	
 	SignalBus.on_hp_changed.emit(health, max_health)
 	SignalBus.on_wave_clear.connect(disable_movement)
 	
 	var bonus_mspd = GameManager.upgrades["mspd"] if GameManager.upgrades.has("mspd") else 0
 	mspd = clamp(mspd * (1.0 + (bonus_mspd /100.0)), 0.1, 500.0)
+	
+	var bonus_regen = GameManager.upgrades["regen"] if GameManager.upgrades.has("regen") else 0
+	regen_value += bonus_regen
 	
 	bullet_amt = 1 + GameManager.upgrades["multishot"] if GameManager.upgrades.has("multishot") else 1
 
@@ -48,13 +54,13 @@ func _physics_process(_delta):
 			shoot()
 
 func shoot():
-	var angle_between : float = 360 / bullet_amt
+	var angle_between : float = 360.0 / float(bullet_amt)
 	
 	for i in bullet_amt:
 		var bullet = PLAYER_BULLET_SCENE.instantiate()
 		
 		var main_direction = global_position.direction_to(get_global_mouse_position()).normalized()
-		var final_direction = main_direction.rotated(deg_to_rad(angle_between * i))
+		var final_direction = main_direction.rotated(deg_to_rad(angle_between * float(i)))
 		
 		bullet.rotation = final_direction.angle()
 		SignalBus.on_player_shoot.emit(bullet, self.global_position, final_direction)

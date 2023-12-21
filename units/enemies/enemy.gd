@@ -17,19 +17,24 @@ var health : float
 
 var target : Player
 var direction : Vector2
+var is_dead : bool = false
 
 func _ready():
+	is_dead = false
 	max_health = max_health + (GameManager.wave * growth_per_wave)
 	health = max_health
-	damage = damage + GameManager.wave
+	damage = damage + (GameManager.wave * growth_per_wave / 2)
+	if GameManager.wave >= 10:
+		gem_qty += 1
 	
 	target = get_tree().get_first_node_in_group("player")
+	
 	movement_behavior.init(self)
 	attacking_behavior.init(self)
 
 func _physics_process(_delta):
 	direction = get_direction()
-	rotation = direction.angle()
+	rotation = get_rotation_angle()
 	velocity = direction * speed
 	move_and_slide()
 
@@ -41,12 +46,16 @@ func take_damage(value : float):
 	emit_particle()
 	health -= value
 	
-	if health <= 0.0:
+	if health <= 0.0 and !is_dead:
+		is_dead = true
 		SignalBus.on_enemy_death.emit(self.global_position, self.gem_qty)
 		queue_free()
 
 func get_direction():
 	return movement_behavior.get_direction()
+	
+func get_rotation_angle():
+	return movement_behavior.get_rotation_angle()
 
 func _on_attack_speed_timeout():
 	attacking_behavior.shoot()

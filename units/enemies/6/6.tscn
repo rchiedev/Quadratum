@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsr3ekq11oy26"]
+
+[ext_resource type="PackedScene" uid="uid://dpgurf2jxihrw" path="res://units/enemies/enemy.tscn" id="1_m1qky"]
+[ext_resource type="Script" path="res://units/enemies/Movement/stay_in_place.gd" id="2_86d0y"]
+[ext_resource type="Texture2D" uid="uid://b6sbv5pwxvt4r" path="res://assets/Enemy-6.png" id="2_fgv1f"]
+[ext_resource type="Script" path="res://units/enemies/Attacks/multishot.gd" id="3_g2yun"]
+
+[node name="6" instance=ExtResource("1_m1qky")]
+speed = 5.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_fgv1f")
+
+[node name="MovementBehavior" parent="." index="3"]
+script = ExtResource("2_86d0y")
+rotate_in_place = true
+
+[node name="AttackingBehavior" parent="." index="4"]
+script = ExtResource("3_g2yun")
+n_of_bullets = 6
+shoot_at_player = false
