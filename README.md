@@ -12,21 +12,22 @@ Hopefully by doing a smaller project like this one. I will get a better idea on 
 
 Things that i learned from this project are:
 + Scene Inheritance (Enemy units)
++ Scene Transitions
 + Signal management using Signal Bus
 + Game state management (Wave, Gems)
 + UI Updates based on game states.
-+ Particle effects
++ Interactable UIs (Shop, Game over screen)
++ Small Particle effects
 
 Things that are still in development:
 + Pause Menu
-+ Small upgrade systems every round end, purchasable using the gems
-+ Proper difficulty ramp and game balance
 + Sound Effects
-+ More enemy types
 + Maybe a boss (?)
 
 Things that i wish to learn and improve more:
 + Scene Structure especially the UI.
++ Proper difficulty ramp and game balance.
++ More enemy AIs and proper management of them.
 + Particle effects, how and when to use them. (So far i only use them on hits or spawn. I need to learn on how to do them when objects disappear/queued free)
 + Proper Signal Bus management (Concern on over-using the signal system).
 + Better thought process on Inheritance (Could've made a Unit scene and both enemies and player could inherit from that).
@@ -39,4 +40,5 @@ Things that i wish to learn and improve more:
 
 # Known Issues 
 Some issues i notice and will fix some time in the future
-+ (URGENT) Bullets stutter and teleports when gameplay fps lags (Most likely have to do with the delta usage)
++ Bullets stutter and teleports when gameplay fps lags (Most likely have to do with the delta usage)
++ Sometimes shop's prices are incorrectly colored (Price turns red when upgrade is still purchasable)
