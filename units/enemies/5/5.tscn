@@ -10,7 +10,7 @@ size = Vector2(5.65686, 5.65685)
 
 [node name="5" instance=ExtResource("1_xlvxn")]
 max_health = 10.0
-growth_per_wave = 2.0
+growth_per_wave = 1.1
 speed = 0.0
 
 [node name="Sprite2D" parent="." index="0"]

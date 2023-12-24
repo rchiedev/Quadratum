@@ -6,7 +6,7 @@ class_name Enemy
 @onready var attacking_behavior = %AttackingBehavior
 
 @export var max_health : float = 20.0
-@export var growth_per_wave : float = 2.5
+@export_range(1.00, 1.2, 0.01) var growth_per_wave : float = 1.0
 @export var speed : float = 20.0
 @export var damage : float = 10.0
 @export var gem_qty : int = 1
@@ -21,7 +21,7 @@ var is_dead : bool = false
 
 func _ready():
 	is_dead = false
-	max_health = max_health + (GameManager.wave * growth_per_wave)
+	max_health = max_health * pow(growth_per_wave, GameManager.wave)
 	health = max_health
 	damage = damage + (GameManager.wave * growth_per_wave / 2)
 	if GameManager.wave >= 10:

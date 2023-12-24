@@ -9,6 +9,7 @@ points = PackedVector2Array(2.5, 0, -0.5, -6.5, -2.5, -6.5, -2.5, -4.5, 0.5, 0, 
 
 [node name="3" instance=ExtResource("1_58u6d")]
 max_health = 30.0
+growth_per_wave = 1.06
 speed = 40.0
 damage = 5.0
 gem_qty = 2

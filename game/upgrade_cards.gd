@@ -43,7 +43,6 @@ func _on_pressed():
 func set_price_label():
 	price_label.text = str(price)
 	price_label.label_settings.font_color = Color.html("#232323")
-	print("Purchasing this will make your gems be : ", GameManager.gems - price)
 	
 	if GameManager.gems - price < 0:
 		price_label.label_settings.font_color = Color.html("#d95763")
