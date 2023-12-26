@@ -42,6 +42,7 @@ func clear_wave():
 	SceneManager.transition_to_buy_menu(get_tree().get_first_node_in_group("player").get_global_transform_with_canvas().origin)
 
 func stop_wave():
+	SceneManager.can_pause = false
 	enemy_timer.stop()
 	wave_timer.stop()
 	for marker in get_children().filter(func(node): return node is Marker):

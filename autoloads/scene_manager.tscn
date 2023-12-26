@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4egi4husq8n8"]
+[gd_scene load_steps=11 format=3 uid="uid://c4egi4husq8n8"]
 
 [ext_resource type="Script" path="res://autoloads/scene_manager.gd" id="1_xllsk"]
+[ext_resource type="FontFile" uid="uid://dhl7e2l35ot2l" path="res://assets/m5x7.ttf" id="2_bnqp4"]
 
 [sub_resource type="Gradient" id="Gradient_y25cc"]
 interpolation_mode = 1
@@ -65,7 +66,32 @@ _data = {
 "transition": SubResource("Animation_2t1d0")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_nmobv"]
+font = ExtResource("2_bnqp4")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xv8hn"]
+bg_color = Color(0.137255, 0.137255, 0.137255, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwx0c"]
+bg_color = Color(0.109804, 0.109804, 0.109804, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_secw4"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
 [node name="SceneManager" type="CanvasLayer"]
+process_mode = 3
 layer = 3
 script = ExtResource("1_xllsk")
 
@@ -85,3 +111,55 @@ texture = SubResource("GradientTexture2D_3mgor")
 libraries = {
 "": SubResource("AnimationLibrary_tlxxm")
 }
+
+[node name="PausedMenu" type="Control" parent="."]
+process_mode = 2
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="PausedMenu"]
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0, 0, 0, 0.862745)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PausedMenu/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.5
+offset_top = -16.5
+offset_right = 33.5
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PausedMenu/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "GAME PAUSED"
+label_settings = SubResource("LabelSettings_nmobv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PausedMenu/ColorRect/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bnqp4")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_xv8hn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xwx0c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_secw4")
+text = "Resume"
+
+[connection signal="pressed" from="PausedMenu/ColorRect/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
