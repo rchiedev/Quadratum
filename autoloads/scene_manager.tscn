@@ -114,6 +114,7 @@ libraries = {
 
 [node name="PausedMenu" type="Control" parent="."]
 process_mode = 2
+visible = false
 custom_minimum_size = Vector2(320, 180)
 layout_mode = 3
 anchors_preset = 0

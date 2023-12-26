@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0gmqq0k826p5"]
+[gd_scene load_steps=13 format=3 uid="uid://c0gmqq0k826p5"]
 
 [ext_resource type="Script" path="res://game/buy_upgrade_menu.gd" id="1_l4pv5"]
 [ext_resource type="Texture2D" uid="uid://bridvg52jj1ml" path="res://assets/Background.png" id="2_qxygm"]
@@ -11,6 +11,14 @@
 [sub_resource type="LabelSettings" id="LabelSettings_1tx6n"]
 font = ExtResource("4_4p8nu")
 font_size = 13
+
+[sub_resource type="Theme" id="Theme_slrfw"]
+default_font = ExtResource("4_4p8nu")
+default_font_size = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_nduov"]
+font = ExtResource("4_4p8nu")
+font_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_8oc2j"]
 font_size = 6
@@ -64,9 +72,23 @@ vertical_alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/margin_left = 4
+
+[node name="BonusList" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_slrfw")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/BonusList"]
+layout_mode = 2
+text = "Current Bonus"
+label_settings = SubResource("LabelSettings_nduov")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 90)

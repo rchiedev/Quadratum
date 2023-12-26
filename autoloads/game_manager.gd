@@ -22,7 +22,7 @@ func reset_game_stats():
 func get_enemy():
 	
 	if wave == 13:
-		return get_enemy_scene(0, 2, 5, 5)
+		return get_enemy_scene(0, 2, 4, 5)
 	elif wave == 12:
 		return get_enemy_scene(2, 2, 3, 3)
 	elif wave == 11:

@@ -38,6 +38,7 @@ func _on_pressed():
 	GameManager.gems -= price
 	
 	SignalBus.on_gem_spent.emit()
+	SignalBus.on_upgrade_purchased.emit()
 	set_visibility(false)
 
 func set_price_label():

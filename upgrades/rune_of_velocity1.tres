@@ -9,4 +9,4 @@ name = "Rune of Velocity I"
 description = "Increase bullet projectile speed by 10%"
 rarity = 0
 operator = 0
-value = 20.0
+value = 10.0
