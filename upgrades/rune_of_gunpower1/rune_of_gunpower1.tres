@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Rune" load_steps=3 format=3 uid="uid://basfyeqirb3tf"]
+
+[ext_resource type="Script" path="res://upgrades/rune.gd" id="1_55orv"]
+[ext_resource type="Resource" uid="uid://dks03ddiuvhno" path="res://upgrades/rune_of_gunpower1/effect0.tres" id="1_dq1x7"]
+
+[resource]
+script = ExtResource("1_55orv")
+name = "Rune of Gunpower I"
+description = "Increase flat damage by 1"
+rarity = 0
+effects = Array[Resource("res://upgrades/effect.gd")]([ExtResource("1_dq1x7")])

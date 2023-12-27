@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Rune" load_steps=3 format=3 uid="uid://cf8lfkft5l7of"]
+
+[ext_resource type="Resource" uid="uid://sdy4cekl6ke0" path="res://upgrades/rune_of_haste3/effect0.tres" id="1_1p1hn"]
+[ext_resource type="Script" path="res://upgrades/rune.gd" id="2_nnve4"]
+
+[resource]
+script = ExtResource("2_nnve4")
+name = "Rune of Haste III"
+description = "Increase Movement Speed by 10%"
+rarity = 2
+effects = Array[Resource("res://upgrades/effect.gd")]([ExtResource("1_1p1hn")])

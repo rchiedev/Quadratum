@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Rune" load_steps=3 format=3 uid="uid://dst5nfdd8hgy1"]
+
+[ext_resource type="Resource" uid="uid://biuwtw0kh6036" path="res://upgrades/rune_of_cycle2/effect0.tres" id="1_6t6gw"]
+[ext_resource type="Script" path="res://upgrades/rune.gd" id="2_cgoy4"]
+
+[resource]
+script = ExtResource("2_cgoy4")
+name = "Rune of Cycle II"
+description = "Increase Attack Speed by 10%"
+rarity = 1
+effects = Array[Resource("res://upgrades/effect.gd")]([ExtResource("1_6t6gw")])

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://hjckuja08wb5"]
+
+[ext_resource type="Script" path="res://upgrades/effect.gd" id="1_vrmw3"]
+
+[resource]
+script = ExtResource("1_vrmw3")
+id = "flat_dmg"
+operator = 0
+value = 3.0

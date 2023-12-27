@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://biuwtw0kh6036"]
+
+[ext_resource type="Script" path="res://upgrades/effect.gd" id="1_xcx87"]
+
+[resource]
+script = ExtResource("1_xcx87")
+id = "aspd"
+operator = 0
+value = 10.0

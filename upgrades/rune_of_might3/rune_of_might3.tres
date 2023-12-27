@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Rune" load_steps=3 format=3 uid="uid://braecjrx02q70"]
+
+[ext_resource type="Resource" uid="uid://gqnpgrlobnbr" path="res://upgrades/rune_of_might3/effect0.tres" id="1_5jr36"]
+[ext_resource type="Script" path="res://upgrades/rune.gd" id="2_egm81"]
+
+[resource]
+script = ExtResource("2_egm81")
+name = "Rune of Might III"
+description = "Increase damage by 10%"
+rarity = 2
+effects = Array[Resource("res://upgrades/effect.gd")]([ExtResource("1_5jr36")])

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Rune" load_steps=3 format=3 uid="uid://djb71i5ckv2j0"]
+
+[ext_resource type="Resource" uid="uid://bonmtocb5cvj" path="res://upgrades/rune_of_regeneration2/effect0.tres" id="1_iycd0"]
+[ext_resource type="Script" path="res://upgrades/rune.gd" id="2_ai7vc"]
+
+[resource]
+script = ExtResource("2_ai7vc")
+name = "Rune of Regeneration II"
+description = "Increase player's regeneration by 0.3"
+rarity = 1
+effects = Array[Resource("res://upgrades/effect.gd")]([ExtResource("1_iycd0")])

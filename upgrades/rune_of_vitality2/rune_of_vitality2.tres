@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Rune" load_steps=3 format=3 uid="uid://bmwno228g6qq2"]
+
+[ext_resource type="Resource" uid="uid://btcd5xk7leqbc" path="res://upgrades/rune_of_vitality2/effect0.tres" id="1_l7ijv"]
+[ext_resource type="Script" path="res://upgrades/rune.gd" id="2_1wmlf"]
+
+[resource]
+script = ExtResource("2_1wmlf")
+name = "Rune of Vitality II"
+description = "Increase player's health by 10"
+rarity = 1
+effects = Array[Resource("res://upgrades/effect.gd")]([ExtResource("1_l7ijv")])

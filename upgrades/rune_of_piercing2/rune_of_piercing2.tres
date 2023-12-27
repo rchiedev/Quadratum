@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Rune" load_steps=4 format=3 uid="uid://pmn5iq535twb"]
+
+[ext_resource type="Resource" uid="uid://cm4325cqtiqmo" path="res://upgrades/rune_of_piercing2/effect0.tres" id="1_xl1bf"]
+[ext_resource type="Script" path="res://upgrades/rune.gd" id="2_2dxbx"]
+[ext_resource type="Resource" uid="uid://cvgow8g6kxegi" path="res://upgrades/rune_of_piercing2/effect1.tres" id="2_d73di"]
+
+[resource]
+script = ExtResource("2_2dxbx")
+name = "Rune of Piercing II"
+description = "Increase bullet's pierce by 1. Decrease damage by 5%. "
+rarity = 2
+effects = Array[Resource("res://upgrades/effect.gd")]([ExtResource("1_xl1bf"), ExtResource("2_d73di")])

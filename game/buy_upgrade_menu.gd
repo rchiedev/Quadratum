@@ -26,7 +26,7 @@ func _ready():
 	set_wave_counter()
 	set_gems_counter()
 	set_refresh_label()
-	set_upgrade_cards()
+	set_rune_cards()
 	set_bonus_list()
 	
 	SignalBus.on_gem_spent.connect(set_gems_counter)
@@ -55,7 +55,7 @@ func _on_refresh_button_pressed():
 		disable_refresh()
 		
 	SignalBus.on_gem_spent.emit()
-	set_upgrade_cards()
+	set_rune_cards()
 
 func set_refresh_label():
 	refresh_cost_label.text = str(refresh_cost)
@@ -67,10 +67,10 @@ func set_refresh_label():
 func disable_refresh():
 	refresh_button.disabled = true
 
-func set_upgrade_cards():
-	upgrade_card.set_upgrade_data(first_shop)
-	upgrade_card2.set_upgrade_data(first_shop)
-	upgrade_card3.set_upgrade_data(first_shop)
+func set_rune_cards():
+	upgrade_card.set_rune_data(first_shop)
+	upgrade_card2.set_rune_data(first_shop)
+	upgrade_card3.set_rune_data(first_shop)
 
 func set_bonus_list():
 	var labels = bonus_list.get_children()
@@ -83,6 +83,17 @@ func set_bonus_list():
 	
 	for n in GameManager.upgrades:
 		var label = Label.new()
+		
 		label.text = n + ": " + str(GameManager.upgrades[n])
+		
+		label.label_settings = LabelSettings.new()
+		label.label_settings.font = preload("res://assets/m5x7.ttf")
+		label.label_settings.font_size = 8
+		
+		if GameManager.upgrades[n] < 0:
+			label.label_settings.font_color = Color.html("#d95763")
+		else:
+			label.label_settings.font_color = Color.html("#d3d3d3")
+	
 		bonus_list.add_child(label)
 	

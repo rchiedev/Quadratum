@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://cfelvkerfk1ys"]
+
+[ext_resource type="Script" path="res://upgrades/effect.gd" id="1_1l2ox"]
+
+[resource]
+script = ExtResource("1_1l2ox")
+id = "multishot"
+operator = 0
+value = 1.0

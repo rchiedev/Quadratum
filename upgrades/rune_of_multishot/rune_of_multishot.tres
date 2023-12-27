@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Rune" load_steps=3 format=3 uid="uid://d3j37cfgt7iwr"]
+
+[ext_resource type="Script" path="res://upgrades/rune.gd" id="1_f34el"]
+[ext_resource type="Resource" uid="uid://cfelvkerfk1ys" path="res://upgrades/rune_of_multishot/effect0.tres" id="1_nikgr"]
+
+[resource]
+script = ExtResource("1_f34el")
+name = "Rune of Multishot"
+description = "Shoot +1 Bullet at an angle"
+rarity = 2
+effects = Array[Resource("res://upgrades/effect.gd")]([ExtResource("1_nikgr")])

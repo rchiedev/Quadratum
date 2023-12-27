@@ -1,8 +1,8 @@
 extends Node
 
-@export var silver_upgrades : Array[Upgrade]
-@export var gold_upgrades : Array[Upgrade]
-@export var prismatic_upgrades : Array[Upgrade]
+@export var silver_runes : Array[Rune]
+@export var gold_runes : Array[Rune]
+@export var prismatic_runes : Array[Rune]
 @export var enemy_list : Array[PackedScene]
 
 var wave : int = 1
@@ -14,7 +14,7 @@ func _ready():
 	
 func reset_game_stats():
 	wave = 1
-	gems = 10
+	gems = 1000
 	upgrades = {
 	
 	}
@@ -64,7 +64,7 @@ func get_enemy_scene(min_melee_index : int = 0, max_melee_index : int = 0, min_r
 	return enemy_scene
 		
 
-func get_upgrade(first_shop : bool):
+func get_rune(first_shop : bool):
 	var x = randi_range(1, 100)
 	
 	var silver_chance = 90
@@ -86,21 +86,15 @@ func get_upgrade(first_shop : bool):
 		silver_chance = 30
 		gold_chance = 90
 	
-	#silver_chance = 33
-	#gold_chance = 33
 	if wave % 5 == 0 and first_shop:
-		return prismatic_upgrades.pick_random()
-
+		return prismatic_runes.pick_random()
 	if x <= silver_chance:
-		return silver_upgrades.pick_random()
+		return silver_runes.pick_random()
 	elif x <= gold_chance:
-		return gold_upgrades.pick_random()
+		return gold_runes.pick_random()
 	else:
-		return prismatic_upgrades.pick_random()
+		return prismatic_runes.pick_random()
 
-func apply_upgrade(upgrade_data : Upgrade):
-	if upgrades.has(upgrade_data.id):
-		upgrades[upgrade_data.id] += upgrade_data.value
-	else:
-		upgrades[upgrade_data.id] = upgrade_data.value
-	print(upgrades[upgrade_data.id])
+func apply_rune(rune_data : Rune):
+	for effect in rune_data.effects:
+		effect.apply()

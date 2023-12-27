@@ -10,20 +10,20 @@ const CARD_UPGRADE_1 = preload("res://assets/Card-Upgrade1.png")
 const CARD_UPGRADE_2 = preload("res://assets/Card-Upgrade2.png")
 const CARD_UPGRADE_3 = preload("res://assets/Card-Upgrade3.png")
 
-var upgrade : Upgrade
+var rune : Rune
 var price : int = 5
 
 func _ready():
 	SignalBus.on_gem_spent.connect(set_price_label)
 
-func set_upgrade_data(first_shop : bool):
-	upgrade = GameManager.get_upgrade(first_shop)
-	name_label.text = upgrade.name
-	description.text = upgrade.description
-	if upgrade.rarity == 0:
+func set_rune_data(first_shop : bool):
+	rune = GameManager.get_rune(first_shop)
+	name_label.text = rune.name
+	description.text = rune.description
+	if rune.rarity == 0:
 		texture_rect.texture = CARD_UPGRADE_1
 		price = 3 + GameManager.wave
-	elif upgrade.rarity == 1:
+	elif rune.rarity == 1:
 		texture_rect.texture = CARD_UPGRADE_2
 		price = 7 + GameManager.wave
 	else:
@@ -34,7 +34,7 @@ func set_upgrade_data(first_shop : bool):
 	set_price_label()
 
 func _on_pressed():
-	GameManager.apply_upgrade(upgrade)
+	GameManager.apply_rune(rune)
 	GameManager.gems -= price
 	
 	SignalBus.on_gem_spent.emit()

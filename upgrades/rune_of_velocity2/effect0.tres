@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://b44g0rpuisw6w"]
+
+[ext_resource type="Script" path="res://upgrades/effect.gd" id="1_mw75c"]
+
+[resource]
+script = ExtResource("1_mw75c")
+id = "proj_speed"
+operator = 0
+value = 5.0

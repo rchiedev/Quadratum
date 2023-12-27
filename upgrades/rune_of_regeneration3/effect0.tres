@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://jvgwbith2iu4"]
+
+[ext_resource type="Script" path="res://upgrades/effect.gd" id="1_yywxq"]
+
+[resource]
+script = ExtResource("1_yywxq")
+id = "regen"
+operator = 0
+value = 0.5

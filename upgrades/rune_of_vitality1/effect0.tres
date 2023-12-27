@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://watjlihhee0y"]
+
+[ext_resource type="Script" path="res://upgrades/effect.gd" id="1_wpb4g"]
+
+[resource]
+script = ExtResource("1_wpb4g")
+id = "health"
+operator = 0
+value = 5.0
