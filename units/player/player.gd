@@ -7,6 +7,10 @@ class_name Player
 
 @onready var damaged_particle = $DamagedParticle
 
+@onready var audio_player = $AudioStreamPlayer
+const ON_PLAYER_HIT_SOUND = preload("res://assets/sfx/onPlayerHit.ogg")
+const ON_PLAYER_SHOOT_SOUND = preload("res://assets/sfx/onPlayerShoot.ogg")
+
 const PLAYER_BULLET_SCENE = preload("res://units/player/player_bullet.tscn")
 
 var direction : Vector2
@@ -68,6 +72,10 @@ func shoot():
 	
 	var bonus_aspd = GameManager.upgrades["aspd"] if GameManager.upgrades.has("aspd") else 0
 	var final_atk_cd = clamp(0.5 / (1.0 + (bonus_aspd /100.0)), 0.1, 2.5)
+	
+	audio_player.stream = ON_PLAYER_SHOOT_SOUND
+	audio_player.play()
+	
 	attack_cooldown.start(final_atk_cd)
 
 func _on_attack_cooldown_timeout():
@@ -86,6 +94,8 @@ func take_damage(damage : float):
 		
 		can_be_damaged = false
 		invincible_timer.start(0.75)
+		audio_player.stream = ON_PLAYER_HIT_SOUND
+		audio_player.play()
 	
 	print("Current HP: ", health)
 

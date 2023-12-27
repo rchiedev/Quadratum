@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://untmwe8lqcgp"]
+[gd_scene load_steps=6 format=3 uid="uid://untmwe8lqcgp"]
 
 [ext_resource type="Script" path="res://game/game_over_screen.gd" id="1_5bumw"]
 [ext_resource type="FontFile" uid="uid://dhl7e2l35ot2l" path="res://assets/m5x7.ttf" id="1_lbehd"]
+[ext_resource type="AudioStream" uid="uid://y5e2lwdtr66c" path="res://assets/sfx/Death.ogg" id="3_etmkf"]
 
 [sub_resource type="Theme" id="Theme_3qkvq"]
 default_font = ExtResource("1_lbehd")
@@ -64,5 +65,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_0y0r6")
 text = "New Game"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_etmkf")
+volume_db = -30.0
 
 [connection signal="pressed" from="Control/NewGame" to="." method="_on_new_game_pressed"]

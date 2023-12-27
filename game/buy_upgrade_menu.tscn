@@ -164,5 +164,8 @@ layout_mode = 2
 theme = SubResource("Theme_mcgmv")
 text = "Next Wave (Wave 99)"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Control2/RefreshButton" to="." method="_on_refresh_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/NextWave" to="." method="_on_next_wave_pressed"]

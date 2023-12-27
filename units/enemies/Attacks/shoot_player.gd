@@ -15,3 +15,6 @@ func shoot():
 	
 	var direction = _parent.global_position.direction_to(target.global_position)
 	SignalBus.on_enemy_shoot.emit(bullet, _parent.global_position, direction)
+		
+	_parent.audio_player.stream = ON_ENEMY_SHOOT_SOUND
+	_parent.audio_player.play()

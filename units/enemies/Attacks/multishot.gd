@@ -17,7 +17,6 @@ func init(parent : Enemy):
 	angle_between = 360.0 / float(n_of_bullets)
 
 func shoot():
-	
 	for n in n_of_bullets:
 		var bullet = ENEMY_BULLET_SCENE.instantiate()
 		bullet.damage = _parent.damage
@@ -30,3 +29,6 @@ func shoot():
 		
 		var direction = final_direction
 		SignalBus.on_enemy_shoot.emit(bullet, _parent.global_position, direction)
+		
+	_parent.audio_player.stream = ON_ENEMY_SHOOT_SOUND
+	_parent.audio_player.play()

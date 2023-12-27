@@ -13,6 +13,10 @@ extends CanvasLayer
 
 @onready var bonus_list = %BonusList
 
+@onready var audio_player = $AudioStreamPlayer
+const SHOP_ENTER_SOUND = preload("res://assets/sfx/Shop_Enter.ogg")
+const SHOP_EXIT_SOUND = preload("res://assets/sfx/Shop_Exit.ogg")
+
 var first_shop : bool = true
 
 func _ready():
@@ -29,6 +33,9 @@ func _ready():
 	SignalBus.on_gem_spent.connect(set_refresh_label)
 	SignalBus.on_upgrade_purchased.connect(set_bonus_list)
 	
+	audio_player.stream = SHOP_ENTER_SOUND
+	audio_player.play()
+	
 func set_wave_counter():
 	next_wave_btn.text = "Next Wave (Wave " + str(GameManager.wave) + ")"
 	
@@ -36,8 +43,9 @@ func set_gems_counter():
 	gem_counter.text = str(GameManager.gems)
 	
 func _on_next_wave_pressed():
+	audio_player.stream = SHOP_EXIT_SOUND
+	audio_player.play()
 	SceneManager.transition_to_game(get_viewport().get_mouse_position() + Vector2(2.4, 2.4))
-	#SceneManager.transition_to_game(next_wave_btn.global_position + Vector2(42.5,12.5))
 
 func _on_refresh_button_pressed():
 	first_shop = false

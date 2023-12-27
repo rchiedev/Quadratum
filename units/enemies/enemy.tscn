@@ -52,4 +52,7 @@ lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+
 [connection signal="timeout" from="AttackingBehavior/AttackSpeed" to="." method="_on_attack_speed_timeout"]

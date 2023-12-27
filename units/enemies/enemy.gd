@@ -11,6 +11,9 @@ class_name Enemy
 @export var damage : float = 10.0
 @export var gem_qty : int = 1
 
+@onready var audio_player = $AudioStreamPlayer
+const ON_ENEMY_HIT_SOUND = preload("res://assets/sfx/onEnemyHit.ogg")
+
 const GEM_SCENE = preload("res://units/gem/gem.tscn")
 
 var health : float
@@ -45,6 +48,8 @@ func emit_particle():
 func take_damage(value : float):
 	emit_particle()
 	health -= value
+	audio_player.stream = ON_ENEMY_HIT_SOUND
+	audio_player.play()
 	
 	if health <= 0.0 and !is_dead:
 		is_dead = true
