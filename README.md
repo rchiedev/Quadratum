@@ -1,4 +1,4 @@
-# Quadratum (UNFINISHED)
+# Quadratum
 Quadratum is an arcade shooter roguelite where you control a box and try to survive the attacks of your enemy.
 Play it here: https://thermian.itch.io/quadratum
 
