@@ -6,4 +6,4 @@
 script = ExtResource("1_bb2es")
 id = "dmg"
 operator = 1
-value = 10.0
+value = 15.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c3y1midygak58"]
+[gd_scene load_steps=33 format=3 uid="uid://c3y1midygak58"]
 
 [ext_resource type="Script" path="res://autoloads/game_manager.gd" id="1_lt5wu"]
 [ext_resource type="Resource" uid="uid://bq2cdc5niy6wr" path="res://upgrades/rune_of_cycle1/rune_of_cycle1.tres" id="2_338w5"]
@@ -16,7 +16,6 @@
 [ext_resource type="Resource" uid="uid://boaxsarbhfdej" path="res://upgrades/rune_of_might2/rune_of_might2.tres" id="9_0vhhr"]
 [ext_resource type="Resource" uid="uid://cf8lfkft5l7of" path="res://upgrades/rune_of_haste3/rune_of_haste3.tres" id="10_bgkkt"]
 [ext_resource type="Resource" uid="uid://c2fkbx0jj6qum" path="res://upgrades/rune_of_piercing1/rune_of_piercing1.tres" id="10_yh8pb"]
-[ext_resource type="Resource" uid="uid://b2m871luighe3" path="res://upgrades/rune_of_rebound1/rune_of_rebound1.tres" id="11_4543p"]
 [ext_resource type="Resource" uid="uid://braecjrx02q70" path="res://upgrades/rune_of_might3/rune_of_might3.tres" id="13_7iofr"]
 [ext_resource type="PackedScene" uid="uid://bs0djvvyb3b0e" path="res://units/enemies/1/1.tscn" id="14_4pudk"]
 [ext_resource type="Resource" uid="uid://d3j37cfgt7iwr" path="res://upgrades/rune_of_multishot/rune_of_multishot.tres" id="14_idqk7"]
@@ -27,7 +26,7 @@
 [ext_resource type="Resource" uid="uid://pmn5iq535twb" path="res://upgrades/rune_of_piercing2/rune_of_piercing2.tres" id="16_mcsxk"]
 [ext_resource type="PackedScene" uid="uid://qyqu0rqi1tlq" path="res://units/enemies/4/4.tscn" id="17_empc0"]
 [ext_resource type="Resource" uid="uid://bmwno228g6qq2" path="res://upgrades/rune_of_vitality2/rune_of_vitality2.tres" id="17_xdwi8"]
-[ext_resource type="Resource" uid="uid://bpocioeydg8cn" path="res://upgrades/rune_of_rebound2/rune_of_rebound2.tres" id="18_daeht"]
+[ext_resource type="Resource" uid="uid://bpocioeydg8cn" path="res://upgrades/rune_of_rebound/rune_of_rebound2.tres" id="18_daeht"]
 [ext_resource type="PackedScene" uid="uid://bsr3ekq11oy26" path="res://units/enemies/6/6.tscn" id="22_1lvm8"]
 [ext_resource type="PackedScene" uid="uid://dtpg2u4g48f6k" path="res://units/enemies/5/5.tscn" id="22_ikr0e"]
 [ext_resource type="Resource" uid="uid://cwc4a64ve6xcg" path="res://upgrades/rune_of_regeneration3/rune_of_regeneration3.tres" id="23_6ienu"]
@@ -37,6 +36,6 @@
 [node name="GameManager" type="Node"]
 script = ExtResource("1_lt5wu")
 silver_runes = Array[Resource("res://upgrades/rune.gd")]([ExtResource("2_338w5"), ExtResource("3_3dkrs"), ExtResource("4_gaof0"), ExtResource("5_jceo5"), ExtResource("6_uydkm"), ExtResource("7_bny4d"), ExtResource("8_mdjex")])
-gold_runes = Array[Resource("res://upgrades/rune.gd")]([ExtResource("6_o73x1"), ExtResource("5_ovijp"), ExtResource("7_0geuf"), ExtResource("9_0vhhr"), ExtResource("14_rawrd"), ExtResource("15_xbey1"), ExtResource("17_xdwi8"), ExtResource("10_yh8pb"), ExtResource("11_4543p")])
+gold_runes = Array[Resource("res://upgrades/rune.gd")]([ExtResource("6_o73x1"), ExtResource("5_ovijp"), ExtResource("7_0geuf"), ExtResource("9_0vhhr"), ExtResource("14_rawrd"), ExtResource("15_xbey1"), ExtResource("17_xdwi8"), ExtResource("10_yh8pb")])
 prismatic_runes = Array[Resource("res://upgrades/rune.gd")]([ExtResource("4_p3qvg"), ExtResource("7_6wxfl"), ExtResource("10_bgkkt"), ExtResource("13_7iofr"), ExtResource("23_6ienu"), ExtResource("24_ue4lk"), ExtResource("27_sp0r5"), ExtResource("14_idqk7"), ExtResource("16_mcsxk"), ExtResource("18_daeht")])
 enemy_list = Array[PackedScene]([ExtResource("14_4pudk"), ExtResource("15_t430s"), ExtResource("16_1vmv8"), ExtResource("17_empc0"), ExtResource("22_ikr0e"), ExtResource("22_1lvm8")])

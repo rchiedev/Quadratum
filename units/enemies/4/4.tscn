@@ -13,6 +13,7 @@ height = 12.0
 max_health = 30.0
 growth_per_wave = 1.05
 speed = 15.0
+damage = 6.0
 gem_qty = 2
 
 [node name="Sprite2D" parent="." index="0"]

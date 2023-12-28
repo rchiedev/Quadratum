@@ -8,7 +8,7 @@ class_name Enemy
 @export var max_health : float = 20.0
 @export_range(1.00, 1.2, 0.01) var growth_per_wave : float = 1.0
 @export var speed : float = 20.0
-@export var damage : float = 10.0
+@export var damage : float = 5.0
 @export var gem_qty : int = 1
 
 @onready var audio_player = $AudioStreamPlayer
@@ -26,7 +26,7 @@ func _ready():
 	is_dead = false
 	max_health = max_health * pow(growth_per_wave, GameManager.wave)
 	health = max_health
-	damage = damage + (GameManager.wave * growth_per_wave / 2)
+	damage = damage * pow(growth_per_wave, GameManager.wave)
 	if GameManager.wave >= 10:
 		gem_qty += 1
 	

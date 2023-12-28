@@ -14,7 +14,7 @@ func _ready():
 	
 func reset_game_stats():
 	wave = 1
-	gems = 1000
+	gems = 10
 	upgrades = {
 	
 	}

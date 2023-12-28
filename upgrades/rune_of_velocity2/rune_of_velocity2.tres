@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_bcqws")
-name = "Rune of Velocity I"
+name = "Rune of Velocity II"
 description = "Increase bullet's speed by 5%"
-rarity = 0
+rarity = 1
 effects = Array[Resource("res://upgrades/effect.gd")]([ExtResource("1_wwfxh")])

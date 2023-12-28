@@ -7,6 +7,6 @@
 [resource]
 script = ExtResource("2_2dxbx")
 name = "Rune of Piercing II"
-description = "Increase bullet's pierce by 1. Decrease damage by 5%. "
+description = "Increase bullet's pierce by 1. Decrease damage by 7%. "
 rarity = 2
 effects = Array[Resource("res://upgrades/effect.gd")]([ExtResource("1_xl1bf"), ExtResource("2_d73di")])

@@ -33,14 +33,19 @@ func _process(delta):
 		velocity = velocity.bounce(collision.get_normal())
 		rotation = velocity.angle()
 		bounce -= 1
+		reduce_damage()
 	elif collision and bounce <= 0:
 		self.queue_free()
 
 func _on_hitbox_body_entered(body):
 	if body is Enemy and can_damage:
 		body.take_damage(damage)
-		
 		pierce -= 1
+		reduce_damage()
+		
 		if pierce < 0:
 			can_damage = false
 			self.queue_free()
+
+func reduce_damage():
+	damage = clamp(damage*0.7, 1, 99999)
