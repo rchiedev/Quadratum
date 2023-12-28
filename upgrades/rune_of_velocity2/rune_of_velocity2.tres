@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Rune" load_steps=3 format=3 uid="uid://b52440cvfpyk6"]
 
-[ext_resource type="Resource" uid="uid://bk2pygwp8um3h" path="res://upgrades/rune_of_velocity1/effect0.tres" id="1_wwfxh"]
+[ext_resource type="Resource" uid="uid://b44g0rpuisw6w" path="res://upgrades/rune_of_velocity2/effect0.tres" id="1_2d1eu"]
 [ext_resource type="Script" path="res://upgrades/rune.gd" id="2_bcqws"]
 
 [resource]
 script = ExtResource("2_bcqws")
 name = "Rune of Velocity II"
-description = "Increase bullet's speed by 5%"
+description = "Increase bullet's speed by 10%"
 rarity = 1
-effects = Array[Resource("res://upgrades/effect.gd")]([ExtResource("1_wwfxh")])
+effects = Array[Resource("res://upgrades/effect.gd")]([ExtResource("1_2d1eu")])

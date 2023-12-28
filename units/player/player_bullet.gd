@@ -48,4 +48,4 @@ func _on_hitbox_body_entered(body):
 			self.queue_free()
 
 func reduce_damage():
-	damage = clamp(damage*0.7, 1, 99999)
+	damage = clamp(damage*0.8, 1, 99999)
