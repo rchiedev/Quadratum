@@ -21,11 +21,12 @@ var first_shop : bool = true
 
 func _ready():
 	first_shop = true
-	refresh_cost = 1 + floor(GameManager.wave / 2)
+	refresh_cost = floor(1 + (GameManager.wave / 2))
+	next_wave_btn.text = "Next Wave (Wave " + str(GameManager.wave) + ")"
 	
-	set_wave_counter()
 	set_gems_counter()
 	set_refresh_label()
+	
 	set_rune_cards()
 	set_bonus_list()
 	
@@ -35,9 +36,6 @@ func _ready():
 	
 	audio_player.stream = SHOP_ENTER_SOUND
 	audio_player.play()
-	
-func set_wave_counter():
-	next_wave_btn.text = "Next Wave (Wave " + str(GameManager.wave) + ")"
 	
 func set_gems_counter():
 	gem_counter.text = str(GameManager.gems)
@@ -49,17 +47,18 @@ func _on_next_wave_pressed():
 
 func _on_refresh_button_pressed():
 	first_shop = false
+	
 	GameManager.gems -= refresh_cost
+	set_rune_cards()
+	set_gems_counter()
 	
 	if GameManager.gems - refresh_cost < 0:
 		disable_refresh()
-		
-	SignalBus.on_gem_spent.emit()
-	set_rune_cards()
 
 func set_refresh_label():
 	refresh_cost_label.text = str(refresh_cost)
 	refresh_cost_label.label_settings.font_color = Color.html("#d3d3d3")
+	
 	if GameManager.gems - refresh_cost < 0:
 		refresh_cost_label.label_settings.font_color = Color.html("#d95763")
 		disable_refresh()

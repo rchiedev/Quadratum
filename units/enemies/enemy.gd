@@ -12,7 +12,7 @@ class_name Enemy
 @export var gem_qty : int = 1
 
 @onready var audio_player = $AudioStreamPlayer
-const ON_ENEMY_HIT_SOUND = preload("res://assets/sfx/onEnemyHit.ogg")
+const ON_ENEMY_HIT_SOUND = preload("res://assets/sfx/onEnemyHit.wav")
 
 const GEM_SCENE = preload("res://units/gem/gem.tscn")
 

@@ -8,8 +8,8 @@ class_name Player
 @onready var damaged_particle = $DamagedParticle
 
 @onready var audio_player = $AudioStreamPlayer
-const ON_PLAYER_HIT_SOUND = preload("res://assets/sfx/onPlayerHit.ogg")
-const ON_PLAYER_SHOOT_SOUND = preload("res://assets/sfx/onPlayerShoot.ogg")
+const ON_PLAYER_HIT_SOUND = preload("res://assets/sfx/onPlayerHit.wav")
+const ON_PLAYER_SHOOT_SOUND = preload("res://assets/sfx/onPlayerShoot.wav")
 
 const PLAYER_BULLET_SCENE = preload("res://units/player/player_bullet.tscn")
 
