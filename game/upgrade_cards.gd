@@ -23,13 +23,13 @@ func set_rune_data(first_shop : bool):
 	description.text = rune.description
 	if rune.rarity == 0:
 		texture_rect.texture = CARD_UPGRADE_1
-		price = 2 + GameManager.wave
+		price = 3 + GameManager.wave
 	elif rune.rarity == 1:
 		texture_rect.texture = CARD_UPGRADE_2
-		price = 6 + GameManager.wave
+		price = 7 + GameManager.wave
 	else:
 		texture_rect.texture = CARD_UPGRADE_3
-		price = 12 + GameManager.wave
+		price = 14 + GameManager.wave
 	
 	set_visibility(true)
 	set_price_label()

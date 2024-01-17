@@ -6,7 +6,7 @@ class_name Enemy
 @onready var attacking_behavior = %AttackingBehavior
 
 @export var max_health : float = 20.0
-@export_range(1.00, 1.2, 0.01) var growth_per_wave : float = 1.0
+@export_range(1.00, 1.20, 0.01) var growth_per_wave : float = 1.0
 @export var speed : float = 20.0
 @export var damage : float = 5.0
 @export var gem_qty : int = 1
@@ -21,14 +21,27 @@ var health : float
 var target : Player
 var direction : Vector2
 var is_dead : bool = false
+var growth : float = 0.0
 
 func _ready():
 	is_dead = false
-	max_health = max_health * pow(growth_per_wave, GameManager.wave)
+	growth = growth_per_wave
+	
+	if GameManager.wave > 20:
+		growth = growth_per_wave + (float(GameManager.wave - 20) / 10.0)
+		
+	max_health = max_health * pow(growth, GameManager.wave)
 	health = max_health
-	damage = damage * pow(growth_per_wave, GameManager.wave)
-	if GameManager.wave >= 10:
-		gem_qty += 1
+	damage = damage * pow(growth, GameManager.wave)
+	
+	var fixed_bonus_gem = floor(GameManager.wave / 10)
+	gem_qty = gem_qty + fixed_bonus_gem 
+	
+	var bonus_gem_change = GameManager.wave % 10
+	if bonus_gem_change > 0:
+		if randi_range(1, 11) <= bonus_gem_change:
+			gem_qty = gem_qty + 1 
+	
 	
 	target = get_tree().get_first_node_in_group("player")
 	

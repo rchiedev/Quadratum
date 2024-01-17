@@ -26,7 +26,7 @@
 [ext_resource type="Resource" uid="uid://pmn5iq535twb" path="res://upgrades/rune_of_piercing2/rune_of_piercing2.tres" id="16_mcsxk"]
 [ext_resource type="PackedScene" uid="uid://qyqu0rqi1tlq" path="res://units/enemies/4/4.tscn" id="17_empc0"]
 [ext_resource type="Resource" uid="uid://bmwno228g6qq2" path="res://upgrades/rune_of_vitality2/rune_of_vitality2.tres" id="17_xdwi8"]
-[ext_resource type="Resource" uid="uid://bpocioeydg8cn" path="res://upgrades/rune_of_rebound/rune_of_rebound2.tres" id="18_daeht"]
+[ext_resource type="Resource" uid="uid://bpocioeydg8cn" path="res://upgrades/rune_of_rebound/rune_of_rebound.tres" id="18_daeht"]
 [ext_resource type="PackedScene" uid="uid://bsr3ekq11oy26" path="res://units/enemies/6/6.tscn" id="22_1lvm8"]
 [ext_resource type="PackedScene" uid="uid://dtpg2u4g48f6k" path="res://units/enemies/5/5.tscn" id="22_ikr0e"]
 [ext_resource type="Resource" uid="uid://cwc4a64ve6xcg" path="res://upgrades/rune_of_regeneration3/rune_of_regeneration3.tres" id="23_6ienu"]

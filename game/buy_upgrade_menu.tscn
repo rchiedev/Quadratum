@@ -92,6 +92,7 @@ vertical_alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 90)
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="UpgradeCard" parent="VBoxContainer/HBoxContainer/HBoxContainer" instance=ExtResource("5_lolo4")]
 unique_name_in_owner = true

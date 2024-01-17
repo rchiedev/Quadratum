@@ -19,7 +19,10 @@ func spawn_enemy(enemy : Enemy, starting_pos : Vector2):
 	add_child(enemy)
 
 func _on_enemy_timer_timeout():
-	var spawn = floor(GameManager.wave / 5)
+	var spawn = floor(GameManager.wave / 4)
+	
+	if GameManager.wave > 20:
+		spawn = spawn + (GameManager.wave - 20)
 	
 	var x = randi_range(2 + spawn, 4 + spawn)
 	for i in x:
