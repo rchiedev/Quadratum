@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://g282e7fxs8ki" path="res://assets/Player.png" id="2_wb62c"]
 [ext_resource type="Texture2D" uid="uid://dpgsxidbrwkel" path="res://assets/Player-Bullet.png" id="3_qu7mo"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsxaj"]
-size = Vector2(6, 6)
+[sub_resource type="CircleShape2D" id="CircleShape2D_u0ucp"]
+radius = 3.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_20xth"]
 radius = 20.0
@@ -26,11 +26,15 @@ motion_mode = 1
 script = ExtResource("1_6ih47")
 max_health = 100.0
 
+[node name="canvas" type="Node2D" parent="."]
+unique_name_in_owner = true
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_wb62c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_gsxaj")
+shape = SubResource("CircleShape2D_u0ucp")
 
 [node name="CollectionArea" type="Area2D" parent="."]
 collision_layer = 0

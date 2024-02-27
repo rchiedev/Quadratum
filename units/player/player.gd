@@ -4,6 +4,7 @@ class_name Player
 @onready var attack_cooldown = $AttackCooldown
 @onready var invincible_timer = $InvincibleTimer
 @onready var regeneration_timer = $RegenerationTimer
+@onready var canvas = %canvas
 
 @onready var damaged_particle = $DamagedParticle
 
@@ -41,6 +42,13 @@ func _ready():
 	regen_value += bonus_regen
 	
 	bullet_amt = 1 + GameManager.upgrades["multishot"] if GameManager.upgrades.has("multishot") else 1
+	canvas.connect("draw", update_draw)
+	
+func update_draw():
+	canvas.draw_arc(Vector2.ZERO, 3.5, 0.0, TAU, 25, Color.WHITE, 1.5, false)
+	
+func _process(delta):
+	canvas.queue_redraw()
 
 func _physics_process(_delta):
 	if not is_dead and can_move:
